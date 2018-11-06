@@ -39,10 +39,10 @@ canvas.addEventListener('mousemove', putPoint);
 canvas.addEventListener('mouseup', disengage);
 canvas.addEventListener ('mouseout',disengage);
 
-canvas.addEventListener("touchstart", engage);
-canvas.addEventListener("touchend", disengage);
-canvas.addEventListener("touchcancel", disengage);
-canvas.addEventListener("touchmove", putPoint);
+canvas.addEventListener('touchstart', engage);
+canvas.addEventListener('touchend', disengage);
+canvas.addEventListener('touchcancel', disengage);
+canvas.addEventListener('touchmove', putPoint);
 
 
    

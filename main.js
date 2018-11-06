@@ -10,7 +10,6 @@ canvas.height = window.innerHeight;
 context.lineWidth = radius*2;
  
 var putPoint = function(e){
-		console.log(e.touches,e.type);
 	if(dragging){
 		context.lineTo(e.clientX, e.clientY);
 		//context.lineTo(e.offsetX, e.offsetY);
@@ -32,7 +31,6 @@ var engage = function(e){
 }
 
 var disengage = function(){
-	console.log(e.touches,e.type);
 	dragging = false;
 	context.beginPath();
 }

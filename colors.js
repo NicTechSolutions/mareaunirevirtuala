@@ -1,4 +1,4 @@
-var colors = ['black', 'grey', 'white', 'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+var colors = ['black', 'grey', 'black', 'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
 
 for(var i=0, n=colors.length;i<n;i++){
 	var swatch = document.createElement('div');

@@ -25,7 +25,7 @@ var putPoint = function(e){
 }
 
 var engage = function(e){
-	console.log(e.touches,e.type);
+	//console.log(e.touches,e.type);
 	dragging = true;
 	putPoint(e);
 }

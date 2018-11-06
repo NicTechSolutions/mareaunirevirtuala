@@ -25,6 +25,7 @@ var putPoint = function(e){
 }
 
 var engage = function(e){
+	console.log(e.touches,e.type);
 	dragging = true;
 	putPoint(e);
 }
@@ -34,15 +35,17 @@ var disengage = function(){
 	context.beginPath();
 }
 
+canvas.addEventListener('touchstart', engage);
+canvas.addEventListener('touchend', disengage);
+canvas.addEventListener('touchcancel', disengage);
+canvas.addEventListener('touchmove', putPoint);
+
 canvas.addEventListener('mousedown', engage);
 canvas.addEventListener('mousemove', putPoint);
 canvas.addEventListener('mouseup', disengage);
 canvas.addEventListener ('mouseout',disengage);
 
-canvas.addEventListener('touchstart', engage);
-canvas.addEventListener('touchend', disengage);
-canvas.addEventListener('touchcancel', disengage);
-canvas.addEventListener('touchmove', putPoint);
+
 
 
    

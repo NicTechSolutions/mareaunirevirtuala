@@ -1,11 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 // import THREEx from 'three';
 
-
 export default class Viewer extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

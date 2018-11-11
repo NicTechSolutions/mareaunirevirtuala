@@ -1,7 +1,11 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-class FacebookLogin extends React.Component {
+export default class FacebookLogin extends React.Component {
+
+  static propTypes = {
+    onLogin: PropTypes.func.isRequired,
+  };
 
   componentDidMount() {
     window.fbAsyncInit = function() {
@@ -34,7 +38,7 @@ class FacebookLogin extends React.Component {
 
   updateLoggedInState(response) {
     console.log(response);
-    this.props.history.push('/painter')
+    this.props.onLogin();
   }
 
   updateLoggedOutState() {
@@ -48,5 +52,3 @@ class FacebookLogin extends React.Component {
     )
   }
 }
-
-export default withRouter(FacebookLogin)

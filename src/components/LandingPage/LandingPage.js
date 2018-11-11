@@ -36,11 +36,13 @@ class LandingPage extends React.Component {
             <Login onLogin={this.login} />
             <Text>OR</Text>
             <FacebookLogin onLogin={this.login} />
+            <Link handleClick={Function.prototype} text="Create an account" />
           </React.Fragment>
         )}
         {this.state.activeTab === REGISTER && (
           <React.Fragment>
-            <Register />
+            <Register onRegister={Function.prototype} />
+            <Link handleClick={Function.prototype} text="Already have an account?" direction="left" />
           </React.Fragment>
         )}
       </div>

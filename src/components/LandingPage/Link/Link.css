@@ -1,0 +1,39 @@
+.link {
+    color: #f4511e;
+    cursor: pointer;
+    transition: 0.5s;
+    position: relative;
+}
+
+.right:after {
+    content: '\00bb';
+    color: #f4511e;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.right:hover {
+    padding-right: 25px;
+}
+
+.left:after {
+    content: '\00bb';
+    color: #f4511e;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: -20px;
+    transition: 0.5s;
+}
+
+.left:hover {
+    padding-left: 25px;
+}
+
+.link:hover:after {
+    opacity: 1;
+    right: 0;
+}

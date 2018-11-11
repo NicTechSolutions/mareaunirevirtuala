@@ -29,10 +29,10 @@ export default class Login extends React.Component {
   render() {
     return (
       <div className="login">
-        <input className="input" type="email" value={this.state.email} onChange={({target : {value}}) => {
+        <input className="input" type="email" placeholder="EMAIL" value={this.state.email} onChange={({target : {value}}) => {
           this.setState({email : value})
         }}/>
-        <input className="input" type="password" value={this.state.password} onChange={({target : {value}}) => {
+        <input className="input" type="password" placeholder="PASSWORD" value={this.state.password} onChange={({target : {value}}) => {
           this.setState({password : value})
         }}/>
         <Button handleClick={this.submit} buttonText="LOGIN"/>

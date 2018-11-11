@@ -19,7 +19,7 @@
     padding-right: 25px;
 }
 
-.left:after {
+.left:before {
     content: '\00bb';
     color: #f4511e;
     position: absolute;
@@ -36,4 +36,8 @@
 .link:hover:after {
     opacity: 1;
     right: 0;
+}
+
+.link:hover:before {
+    opacity: 1;
 }

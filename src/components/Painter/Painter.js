@@ -45,7 +45,7 @@ export default class Painter extends React.Component {
           </div>
           <div className="colors">
             {COLORS.map(color => (
-              <div className="swatch" style={{backgroundColor : color}}
+              <div key={color} className="swatch" style={{backgroundColor : color}}
                    onClick={() => this.setState({activeColor : color})}/>
             ))}
           </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-class Login extends React.Component {
+class FacebookLogin extends React.Component {
 
   componentDidMount() {
     window.fbAsyncInit = function() {
@@ -49,4 +49,4 @@ class Login extends React.Component {
   }
 }
 
-export default withRouter(Login)
+export default withRouter(FacebookLogin)

@@ -1,5 +1,5 @@
-import Login from './Login';
+import FacebookLogin from './LandingPage/FacebookLogin';
 import Painter from './Painter';
 import Viewer from './Viewer';
 
-export { Login, Painter, Viewer };
+export { FacebookLogin, Viewer, Painter };

@@ -38,10 +38,15 @@ export default class Painter extends React.Component {
           <div className="size">
             SIZE:
             <div className="size-button"
-                 onClick={() => this.setState({activeBrushSize : this.state.activeBrushSize - 1})}>-</div>
+                 onClick={() => {
+                   if (this.state.activeBrushSize - 1 > 0) {
+                     this.setState({activeBrushSize : this.state.activeBrushSize - 1})
+                   }
+                 }}>-</div>
             {this.state.activeBrushSize}
             <div className="size-button"
-                 onClick={() => this.setState({activeBrushSize : this.state.activeBrushSize + 1})}>+</div>
+                 onClick={() => this.setState({activeBrushSize : this.state.activeBrushSize + 1})}>+
+            </div>
           </div>
           <div className="colors">
             {COLORS.map(color => (

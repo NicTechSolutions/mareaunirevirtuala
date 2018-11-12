@@ -1,3 +1,5 @@
+@value tabletMaxWidth from '../../../styles/media.css';
+
 .input {
     height: 36px;
     font-size: 16px;
@@ -13,4 +15,10 @@
     display: flex;
     flex-direction: column;
     width: 50%;
+}
+
+@media only screen and (max-width: tabletMaxWidth) {
+    .input {
+        border: solid 1px #f4511e;
+    }
 }

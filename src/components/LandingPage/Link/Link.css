@@ -6,7 +6,7 @@
 }
 
 .right:after {
-    content: '\00bb';
+    content: '\2192';
     color: #f4511e;
     position: absolute;
     opacity: 0;
@@ -20,7 +20,7 @@
 }
 
 .left:before {
-    content: '\00bb';
+    content: '\2190';
     color: #f4511e;
     position: absolute;
     opacity: 0;

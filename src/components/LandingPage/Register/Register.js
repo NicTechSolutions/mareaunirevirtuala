@@ -15,6 +15,7 @@ export default class Register extends React.Component {
     this.submit = this.submit.bind(this);
 
     this.state = {
+      name: '',
       email: '',
       password: ''
     }
@@ -27,6 +28,9 @@ export default class Register extends React.Component {
   render() {
     return(
       <div className="register">
+        <input className="input" type="text" placeholder="NAME" value={this.state.name} onChange={({target : {value}}) => {
+          this.setState({name : value})
+        }}/>
         <input className="input" type="email" placeholder="EMAIL" value={this.state.email} onChange={({target : {value}}) => {
           this.setState({email : value})
         }}/>

@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "ar.js": "^1.6.2",
+    "jsfeat": "0.0.8",
+    "lodash.isequal": "4.5.0",
     "prop-types": "^15.6.2",
     "react": "^16.6.1",
     "react-canvas-draw": "^0.1.9",

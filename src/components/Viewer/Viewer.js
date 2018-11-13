@@ -19,7 +19,6 @@ export default class Viewer extends React.Component {
         const scene = new Scene();
         const camera = new Camera();
         scene.add(camera);
-        camera.needsUpdate= true;
 
         const markerRoot = new Group();
         scene.add(markerRoot);
@@ -34,6 +33,7 @@ export default class Viewer extends React.Component {
         // Create a texture for our image
         const texture = new Texture(image);
         texture.needsUpdate = true; // This instruct three.js to update this object at next render
+
         const opacity = 1;
 
         // Create a material for our image to use on the mesh we'll create later
@@ -43,19 +43,18 @@ export default class Viewer extends React.Component {
             side: DoubleSide,
             transparent: true,
         });
-
+        scene.needsUpdate = true;
         // From the new plane and material, instantiate a three.js mesh
         this.mesh = new Mesh(geometry, this.material);
 
         // This rotation is necessary to have the image in front of us
         this.mesh.rotation.x = - Math.PI / 2; // -90°
         //todo set values
-        // this.mesh.rotation.z = rotation;
+        // this.mesh.rotation.y = - Math.PI / 2;
         // this.mesh.position.x = coordX;
         // this.mesh.position.z = coordZ;
         // this.mesh.scale.x = scaleX;
         // this.mesh.scale.y = scaleY;
-
 
 
         // Instruct arToolKit to display this image at the hiro marker position
@@ -81,8 +80,8 @@ export default class Viewer extends React.Component {
                 onRenderFct(deltaMsec / 1000, nowMsec / 1000);
             });
         }
-
         requestAnimationFrame(animate);
+        animate();
     }
 
     componentWillUnmount() {
@@ -93,23 +92,17 @@ export default class Viewer extends React.Component {
         this.canvas = node;
     }
 
-    // componentDidUpdate() {
-    //     // Here we update the mesh and material from user preferences
-    //     const { coordX, coordZ, scaleX, scaleY, rotation } = this.props;
+    componentDidUpdate() {
 
-    //     // Apply the user preferences for rotation, position and zoom
-    //     this.mesh.position.x = coordX;
-    //     this.mesh.position.z = coordZ;
-    //     this.mesh.scale.x = scaleX;
-    //     this.mesh.scale.y = scaleY;
-    //     this.mesh.rotation.z = rotation;
-    //     this.mesh.needsUpdate = true; // Instruct three.js to update this object at next render
+        // this.mesh.position.x = coordX;
+        // this.mesh.position.z = coordZ;
+        // this.mesh.scale.x = scaleX;
+        // this.mesh.scale.y = scaleY;
+        // this.mesh.rotation.z = rotation;
+        this.mesh.needsUpdate = true; // Instruct three.js to update this object at next render
 
-    //     const { blackImage, image } = this.props;
-    //     const { opacity, isDetectingEdge, blur, lowTreshold, highTreshold } = this.props;
-
-    //     this.material.needsUpdate = true;
-    // }
+        this.material.needsUpdate = true;
+    }
 
     render() {
         return (

@@ -12,7 +12,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/painter" component={Painter} />
-          <Route exact path="/viewer" component={ViewerFrame} />
+          <Route exact path="/viewerframe" component={ViewerFrame} />
         </Switch>
       </div>
     );

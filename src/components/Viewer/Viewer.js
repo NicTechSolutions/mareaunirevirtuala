@@ -1,17 +1,15 @@
 import React from 'react';
 import { initializeArToolkit, getMarker } from '../../utils/arToolkit';
 import initializeRenderer from '../../utils/initializeRenderer';
-import getImage from '../../utils/getImage';
 
 const { Camera, DoubleSide, Group, Mesh, MeshBasicMaterial, PlaneGeometry, Scene, Texture } = window.THREE;
 
 export default class Viewer extends React.Component {
     componentDidMount() {
         const {
-            image2
+            image
         } = this.props;
 
-        const image = getImage('/test.png');
         // initializeRenderer instanciate a new WebGlRenderer from three.js with some options
         // for opacity, size, etc.
         const renderer = this.renderer = initializeRenderer(this.canvas);
@@ -43,7 +41,6 @@ export default class Viewer extends React.Component {
             side: DoubleSide,
             transparent: true,
         });
-        scene.needsUpdate = true;
         // From the new plane and material, instantiate a three.js mesh
         this.mesh = new Mesh(geometry, this.material);
 
@@ -81,7 +78,6 @@ export default class Viewer extends React.Component {
             });
         }
         requestAnimationFrame(animate);
-        animate();
     }
 
     componentWillUnmount() {

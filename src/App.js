@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import { LandingPage, Painter, Viewer } from './components';
+import { LandingPage, Painter, ViewerFrame } from './components';
 
 import './App.css';
 
@@ -12,7 +12,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/painter" component={Painter} />
-          <Route exact path="/viewer" component={Viewer} />
+          <Route exact path="/viewer" component={ViewerFrame} />
         </Switch>
       </div>
     );

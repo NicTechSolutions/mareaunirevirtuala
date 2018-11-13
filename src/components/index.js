@@ -1,5 +1,5 @@
 import LandingPage from './LandingPage/';
 import Painter from './Painter';
-import Viewer from './Viewer';
+import ViewerFrame from './Viewer';
 
-export { LandingPage, Viewer, Painter };
+export { LandingPage, ViewerFrame, Painter };

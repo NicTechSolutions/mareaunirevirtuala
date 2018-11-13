@@ -1,5 +1,6 @@
 import React from 'react';
 import CanvasDraw from 'react-canvas-draw';
+import { withRouter } from 'react-router-dom';
 
 import Button from '../Button';
 
@@ -7,17 +8,18 @@ import './Painter.css'
 
 const COLORS = ['black', 'grey', 'white', 'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
 
-export default class Painter extends React.Component {
-
+class Painter extends React.Component {
   constructor(props) {
     super(props);
 
     this.toRef       = this.toRef.bind(this);
     this.clearCanvas = this.clearCanvas.bind(this);
+    this.saveDrawing = this.saveDrawing.bind(this);
+    this.undo        = this.undo.bind(this);
 
     this.state = {
       activeColor     : COLORS[0],
-      activeBrushSize : 5
+      activeBrushSize : 5,
     };
   }
 
@@ -28,6 +30,19 @@ export default class Painter extends React.Component {
   clearCanvas() {
     if (this.canvas) {
       this.canvas.clear();
+    }
+  }
+
+  undo() {
+    if (this.canvas) {
+      this.canvas.undo();
+    }
+  }
+
+  saveDrawing() {
+    if (this.canvas) {
+      window.drawingUrl = this.canvas.canvas.toDataURL();
+      this.props.history.push('/counter')
     }
   }
 
@@ -64,9 +79,12 @@ export default class Painter extends React.Component {
         />
         <div className="button-bar">
           <Button handleClick={this.clearCanvas} buttonText="CLEAR"/>
-          <Button handleClick={Function.prototype} buttonText="SAVE"/>
+          <Button handleClick={this.undo} buttonText="UNDO"/>
+          <Button handleClick={this.saveDrawing} buttonText="SAVE"/>
         </div>
       </React.Fragment>
     )
   }
 }
+
+export default withRouter(Painter);

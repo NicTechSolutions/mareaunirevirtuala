@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 export default class FacebookLogin extends React.Component {
 
@@ -37,7 +38,11 @@ export default class FacebookLogin extends React.Component {
   }
 
   updateLoggedInState(response) {
-    console.log(response);
+    console.log(response.authResponse.accessToken);
+    axios.post('https://ro100.cf/api/users/fb/login', {access_token: response.authResponse.accessToken})
+      .then(res => {
+          console.log(res);
+      });
     this.props.onLogin();
   }
 
@@ -48,7 +53,8 @@ export default class FacebookLogin extends React.Component {
   render() {
     return (
       <div className="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with"
-           data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+           data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"
+           data-scope="public_profile, email"></div>
     )
   }
 }

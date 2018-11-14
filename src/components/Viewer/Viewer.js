@@ -26,7 +26,7 @@ export default class Viewer extends React.Component {
 
         // The fun begins: instantiate the plane on which to draw our image
         // It will be oriented correctly by arToolKit depending on the marker orientation
-        const geometry = new PlaneGeometry(1, 1, 1);
+        const geometry = new PlaneGeometry(7, 3, 1);
 
          // Create a texture for our image
         

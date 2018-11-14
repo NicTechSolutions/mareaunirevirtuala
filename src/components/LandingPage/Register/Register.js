@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Button from '../../Button';
 
 import './Register.css';
+import axios from 'axios';
 
 export default class Register extends React.Component {
   static propTypes = {
@@ -22,7 +23,15 @@ export default class Register extends React.Component {
   }
 
   submit() {
-    console.log(this.state);
+    axios.post('https://ro100.cf/api/users/register', {...this.state})
+      .then(res => {
+        if (res.status === 200) {
+          this.props.onRegister(res.data.token);
+        }
+      })
+      .catch(e => {
+        console.log(e)
+      });
   }
 
   render() {

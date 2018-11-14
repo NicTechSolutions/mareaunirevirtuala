@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 import Button from '../../Button';
 
@@ -23,7 +24,15 @@ export default class Login extends React.Component {
   }
 
   submit() {
-    console.log(this.state)
+    axios.post('https://ro100.cf/api/users/login', {...this.state})
+      .then(res => {
+        if (res.status === 200) {
+          this.props.onLogin(res.data.token);
+        }
+      })
+      .catch(e => {
+        console.log(e)
+      });
   }
 
   render() {

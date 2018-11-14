@@ -37,8 +37,9 @@ class LandingPage extends React.Component {
     }
   }
 
-  login() {
-    this.props.history.push('/painter')
+  login(token) {
+    console.log(token)
+    this.props.history.push('/painter');
   }
 
   render() {

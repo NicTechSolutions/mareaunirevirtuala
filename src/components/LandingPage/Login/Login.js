@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import Modal from 'react-responsive-modal';
+import ComplianceModal from '../../Compliance';
 
 import Button from '../../Button';
 
@@ -68,6 +70,8 @@ export default class Login extends React.Component {
             <div class="loader"></div>
           </div>}
         {!loading && < Button handleClick={this.submit} buttonText="AUTENTIFICARE" />}
+
+        <ComplianceModal></ComplianceModal>
       </div>
     )
   }

@@ -55,7 +55,7 @@ class LandingPage extends React.Component {
         )}
         {this.state.activeTab === REGISTER && (
           <React.Fragment>
-            <Register onRegister={Function.prototype} />
+            <Register onRegister={this.login} />
             <Link handleClick={this.switchTab} text="Aveți deja un cont?" direction="left" />
           </React.Fragment>
         )}

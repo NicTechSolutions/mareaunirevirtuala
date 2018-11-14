@@ -32,10 +32,10 @@ export default class Login extends React.Component {
         <input className="input" type="email" placeholder="EMAIL" value={this.state.email} onChange={({target : {value}}) => {
           this.setState({email : value})
         }}/>
-        <input className="input" type="password" placeholder="PASSWORD" value={this.state.password} onChange={({target : {value}}) => {
+        <input className="input" type="password" placeholder="PAROLĂ" value={this.state.password} onChange={({target : {value}}) => {
           this.setState({password : value})
         }}/>
-        <Button handleClick={this.submit} buttonText="LOGIN"/>
+        <Button handleClick={this.submit} buttonText="AUTENTIFICARE"/>
       </div>
     )
   }

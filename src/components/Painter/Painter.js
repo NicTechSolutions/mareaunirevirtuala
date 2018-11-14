@@ -6,7 +6,7 @@ import Button from '../Button';
 
 import './Painter.css'
 
-const COLORS = ['black', 'grey', 'white', 'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+const COLORS = ['red', 'yellow', 'blue'];
 
 class Painter extends React.Component {
   constructor(props) {
@@ -51,7 +51,7 @@ class Painter extends React.Component {
       <React.Fragment>
         <div className="toolbar">
           <div className="size">
-            SIZE:
+            DIMENSIUNE:
             <div className="size-button"
                  onClick={() => {
                    if (this.state.activeBrushSize - 1 > 0) {
@@ -78,9 +78,9 @@ class Painter extends React.Component {
           canvasHeight={window.innerHeight}
         />
         <div className="button-bar">
-          <Button handleClick={this.clearCanvas} buttonText="CLEAR"/>
-          <Button handleClick={this.undo} buttonText="UNDO"/>
-          <Button handleClick={this.saveDrawing} buttonText="SAVE"/>
+          <Button handleClick={this.clearCanvas} buttonText="ȘTERGE"/>
+          <Button handleClick={this.undo} buttonText="ANULEAZĂ"/>
+          <Button handleClick={this.saveDrawing} buttonText="TRIMITE"/>
         </div>
       </React.Fragment>
     )

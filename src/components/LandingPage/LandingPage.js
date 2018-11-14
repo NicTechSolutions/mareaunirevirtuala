@@ -47,15 +47,15 @@ class LandingPage extends React.Component {
         {this.state.activeTab === LOGIN && (
           <React.Fragment>
             <Login onLogin={this.login} />
-            <Text>OR</Text>
+            <Text>SAU</Text>
             <FacebookLogin onLogin={this.login} />
-            <Link handleClick={this.switchTab} text="Create an account" />
+            <Link handleClick={this.switchTab} text="Creați un cont" />
           </React.Fragment>
         )}
         {this.state.activeTab === REGISTER && (
           <React.Fragment>
             <Register onRegister={Function.prototype} />
-            <Link handleClick={this.switchTab} text="Already have an account?" direction="left" />
+            <Link handleClick={this.switchTab} text="Aveți deja un cont?" direction="left" />
           </React.Fragment>
         )}
       </div>

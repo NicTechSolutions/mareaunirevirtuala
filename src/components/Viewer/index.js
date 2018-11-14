@@ -1,3 +1,3 @@
-import Viewer from './Viewer';
+import ViewerFrame from './ViewerFrame';
 
-export default Viewer;
+export default ViewerFrame;

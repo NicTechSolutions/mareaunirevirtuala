@@ -15,7 +15,7 @@ const { ArMarkerControls, ArToolkitContext, ArToolkitSource } = THREEx;
 
 export function initializeArToolkit(renderer, camera, onRenderFcts) {
     ArToolkitContext.baseURL = '../';
-    const arToolkitSource = new ArToolkitSource({ sourceType: 'webcam' });
+    const arToolkitSource = new ArToolkitSource({ sourceType : 'webcam' });
 
     arToolkitSource.init(() => {
         arToolkitSource.onResize(renderer.domElement);
@@ -25,7 +25,7 @@ export function initializeArToolkit(renderer, camera, onRenderFcts) {
         arToolkitSource.onResize(renderer.domElement);
     });
 
-    // create an atToolkitContext
+    // create an arToolkitContext
     const arToolkitContext = new ArToolkitContext({
         cameraParametersUrl: cameraData,
         // THe hiro marker is monochrome
@@ -40,10 +40,9 @@ export function initializeArToolkit(renderer, camera, onRenderFcts) {
         camera.projectionMatrix.copy(arToolkitContext.getProjectionMatrix());
     });
 
+    // update artoolkit on every frame
     onRenderFcts.push(() => {
-        if (arToolkitSource.ready === false) {
-            return;
-        }
+        if(arToolkitSource.ready === false) return;
         arToolkitContext.update(arToolkitSource.domElement);
     });
 

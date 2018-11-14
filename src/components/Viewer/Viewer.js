@@ -7,7 +7,7 @@ const { Camera, DoubleSide, Group, Mesh, MeshBasicMaterial, PlaneGeometry, Scene
 export default class Viewer extends React.Component {
     componentDidMount() {
         const {
-            image
+            texture
         } = this.props;
 
         // initializeRenderer instanciate a new WebGlRenderer from three.js with some options
@@ -28,8 +28,9 @@ export default class Viewer extends React.Component {
         // It will be oriented correctly by arToolKit depending on the marker orientation
         const geometry = new PlaneGeometry(1, 1, 1);
 
-        // Create a texture for our image
-        const texture = new Texture(image);
+         // Create a texture for our image
+        
+         // const texture = new Texture(image);
         texture.needsUpdate = true; // This instruct three.js to update this object at next render
 
         const opacity = 1;

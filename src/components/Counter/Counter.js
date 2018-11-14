@@ -5,7 +5,7 @@ export default class Counter extends React.Component {
     return(
       <React.Fragment>
         <div>Counter</div>
-        <a href={window.drawingUrl} className="button" download="My-Romania.png">DOWNLOAD</a>
+        <a href={window.drawingUrl} className="button" download="My-Romania.png">DESCARCĂ</a>
       </React.Fragment>
     );
   }

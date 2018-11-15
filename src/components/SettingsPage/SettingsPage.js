@@ -5,40 +5,66 @@ import "./SettingsPage.css";
 
 export default class SettingsPage extends React.Component {
     state = {
-        modalOpened: false
+        showPrompt: false,
+        open: true,
     }
 
-    openConfirmModal = () => {
+    componentDidMount() {
+        this.receiveEmailCheck.click();
+    }
+
+    toggleConfirmPrompt = () => {
         this.setState({
-            modalOpened: true
+            showPrompt: !this.state.showPrompt
         }
         )
     };
 
-    onConfirmModalClose = () => {
+    deleteAccount = () => {
+        console.log("deleting account");
+    }
+
+    onClose = () => {
         this.setState({
-            modalOpened: false
+            open: false
         })
     }
 
     render() {
-        const { modalOpened } = this.state;
+        const { showPrompt } = this.state;
         return (
             <React.Fragment>
-                <div className="container">
-                    <div className="title"><h1>Setarile mele</h1></div>
+                <Modal open={true} onClose={this.onClose}>
+                    <div className="main">
+                        <div className="title">
+                            <h2>Setarile mele</h2>
+                        </div>
 
-                    <button className="delete btn btn-danger" onClick={this.openConfirmModal}>VREAU SA STERG ACEST CONT</button>
-                    <Modal open={modalOpened} onClose={this.onConfirmModalClose}>
-                        <div className="confirm-container">
-                            <div>Esti pe cale sa stergi acest cont.
-                                 Esti sigur de aceasta decizie?</div>
-                            <div className="button-container">
-                                <button className="btn btn-danger" onClick={this.onClose}>DA</button>
+                        <div className="checkbox-container">
+                            <div>Doresc sa primesc email-uri</div>
+                            <div className="checkbox">
+                                <label className="switch">
+                                    <input ref={input => this.receiveEmailCheck = input} type="checkbox" />
+                                    <span className="slider"></span>
+                                </label>
                             </div>
                         </div>
-                    </Modal>
-                </div>
+
+                        {!showPrompt &&
+                            <div className="delete button-container">
+                                <button className="btn btn-danger" onClick={this.toggleConfirmPrompt}>STERGE ACEST CONT</button>
+                            </div>
+                        }
+                        {showPrompt &&
+                            <div className="delete">
+                                <div>Esti pe cale sa stergi acest cont.
+                                 Esti sigur de aceasta decizie?</div>
+                                <div className="button-container">
+                                    <button className="btn btn-danger" onClick={this.deleteAccount}>DA</button>
+                                </div>
+                            </div>}
+                    </div>
+                </Modal>
 
 
             </React.Fragment>

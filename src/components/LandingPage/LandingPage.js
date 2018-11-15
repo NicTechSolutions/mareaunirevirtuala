@@ -6,6 +6,7 @@ import FacebookLogin from './FacebookLogin';
 import Text from '../Text';
 import Link from './Link';
 import Register from './Register';
+import Cookies from 'universal-cookie';
 
 import './LandingPage.css';
 
@@ -13,6 +14,7 @@ const LOGIN = 'login';
 const REGISTER = 'register';
 
 class LandingPage extends React.Component {
+  cookies = new Cookies();
 
   constructor(props) {
     super(props);
@@ -39,6 +41,8 @@ class LandingPage extends React.Component {
 
   login(token) {
     console.log(token)
+    this.cookies.set("token", token);
+
     this.props.history.push('/painter');
   }
 

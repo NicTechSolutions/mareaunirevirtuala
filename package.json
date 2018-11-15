@@ -16,7 +16,8 @@
     "react-dom": "^16.6.1",
     "react-responsive-modal": "^3.5.1",
     "react-router-dom": "^4.3.1",
-    "three.js": "^0.77.1"
+    "three.js": "^0.77.1",
+    "universal-cookie": "^3.0.4"
   },
   "devDependencies": {
     "react-scripts": "2.1.1"

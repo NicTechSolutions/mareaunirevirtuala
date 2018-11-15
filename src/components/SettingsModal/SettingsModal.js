@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from 'react-responsive-modal';
+import axios from 'axios';
 import "./SettingsModal.css";
 
 export default class SettingsModal extends React.Component {
@@ -20,7 +21,13 @@ export default class SettingsModal extends React.Component {
     };
 
     deleteAccount = () => {
-        console.log("deleting account");
+        axios.delete('https://ro100.cf/api/users/2')
+            .then(
+                response => {
+
+                }, err => {
+
+                })
     }
 
     onClose = () => {

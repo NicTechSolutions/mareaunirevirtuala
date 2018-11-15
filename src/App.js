@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import { LandingPage, Painter, ViewerFrame, Counter, SettingsPage } from './components';
+import { LandingPage, Painter, ViewerFrame, Counter, SettingsModal } from './components';
+
+import './config/Interceptors';
 
 import './App.css';
 
@@ -14,7 +16,7 @@ class App extends Component {
           <Route exact path="/painter" component={Painter} />
           <Route exact path="/viewerframe" component={ViewerFrame} />
           <Route exact path="/counter" component={Counter} />
-          <Route exact path="/settings" component={SettingsPage} />
+          <Route exact path="/settings" component={SettingsModal} />
         </Switch>
       </div>
     );

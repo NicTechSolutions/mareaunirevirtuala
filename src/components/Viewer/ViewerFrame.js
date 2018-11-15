@@ -1,6 +1,5 @@
 import React from 'react';
 import Viewer from './Viewer';
-import getImage from '../../utils/getImage';
 
 const { ImageUtils } = window.THREE;
 export default class ViewerFrame extends React.Component {

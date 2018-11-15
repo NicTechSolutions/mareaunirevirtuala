@@ -2,7 +2,7 @@ import React from 'react';
 import { initializeArToolkit, getMarker } from '../../utils/arToolkit';
 import initializeRenderer from '../../utils/initializeRenderer';
 
-const { Camera, DoubleSide, Group, Mesh, MeshBasicMaterial, PlaneGeometry, Scene, Texture } = window.THREE;
+const { Camera, DoubleSide, Group, Mesh, MeshBasicMaterial, PlaneGeometry, Scene } = window.THREE;
 
 export default class Viewer extends React.Component {
     componentDidMount() {
@@ -22,11 +22,11 @@ export default class Viewer extends React.Component {
         scene.add(markerRoot);
         const onRenderFcts = []; // Array of functions called for each rendering frames
         const arToolkitContext = initializeArToolkit(renderer, camera, onRenderFcts);
-        const marker = getMarker(arToolkitContext, markerRoot);
+        getMarker(arToolkitContext, markerRoot);
 
         // The fun begins: instantiate the plane on which to draw our image
         // It will be oriented correctly by arToolKit depending on the marker orientation
-        const geometry = new PlaneGeometry(7, 3, 1);
+        const geometry = new PlaneGeometry(3, 2, 1);
 
          // Create a texture for our image
         

@@ -5,6 +5,8 @@ import Button from '../../Button';
 import './Register.css';
 import axios from 'axios';
 
+import Constants from '../../../constants/Constants';
+
 export default class Register extends React.Component {
   static propTypes = {
     onRegister: PropTypes.func.isRequired,
@@ -26,7 +28,7 @@ export default class Register extends React.Component {
 
   submit() {
     this.switchLoading();
-    axios.post('https://ro100.cf/api/users/register', { ...this.state })
+    axios.post(`${Constants.API_URL}/users/register`, { ...this.state })
       .then(res => {
         this.switchLoading();
         if (res.status === 200) {

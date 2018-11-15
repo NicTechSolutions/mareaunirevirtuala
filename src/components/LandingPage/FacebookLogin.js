@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
+import Constants from '../../constants/Constants';
+
 export default class FacebookLogin extends React.Component {
 
   static propTypes = {
@@ -39,7 +41,7 @@ export default class FacebookLogin extends React.Component {
 
   updateLoggedInState(response) {
     console.log(response.authResponse.accessToken);
-    axios.post('https://ro100.cf/api/users/fb/login', {access_token: response.authResponse.accessToken})
+    axios.post(`${Constants.API_URL}/users/fb/login`, {access_token: response.authResponse.accessToken})
       .then(res => {
           console.log(res);
       });

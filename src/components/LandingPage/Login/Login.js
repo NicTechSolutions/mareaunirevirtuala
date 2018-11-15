@@ -7,6 +7,7 @@ import Button from '../../Button';
 
 import './Login.css';
 
+import Constants from '../../../constants/Constants';
 
 export default class Login extends React.Component {
 
@@ -29,7 +30,7 @@ export default class Login extends React.Component {
 
   submit() {
     this.switchLoading();
-    axios.post('https://ro100.cf/api/users/login', { ...this.state })
+    axios.post(`${Constants.API_URL}/users/login`, { ...this.state })
       .then(res => {
         this.switchLoading();
         if (res.status === 200) {

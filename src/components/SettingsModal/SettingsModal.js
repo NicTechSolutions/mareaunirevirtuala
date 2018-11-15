@@ -3,6 +3,8 @@ import Modal from 'react-responsive-modal';
 import axios from 'axios';
 import "./SettingsModal.css";
 
+import Constants from '../../constants/Constants';
+
 export default class SettingsModal extends React.Component {
     state = {
         showPrompt: false,
@@ -21,7 +23,7 @@ export default class SettingsModal extends React.Component {
     };
 
     deleteAccount = () => {
-        axios.delete('https://ro100.cf/api/users/2')
+        axios.delete(`${Constants.API_URL}/users/2`)
             .then(
                 response => {
 

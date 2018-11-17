@@ -41,7 +41,7 @@ class Painter extends React.Component {
 
   saveDrawing() {
     if (this.canvas) {
-      window.drawingUrl = this.canvas.canvas.toDataURL('image/jpeg');
+      window.drawingUrl = this.canvas.canvas.toDataURL();
       this.props.history.push('/counter')
     }
   }

@@ -40,7 +40,6 @@ class LandingPage extends React.Component {
   }
 
   login(token) {
-    console.log(token)
     this.cookies.set("token", token);
 
     this.props.history.push('/painter');

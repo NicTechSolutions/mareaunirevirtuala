@@ -2,31 +2,64 @@ import React from 'react';
 
 import "./PasswordResetPage.css";
 import Button from '../Button';
+import axios from 'axios';
+import * as queryString from 'query-string';
+
+import Constants from '../../constants/Constants'
 
 export default class PasswordResetPage extends React.Component {
     state = {
-        password: null,
-        passwordCheck: null
+        password: '',
+        passwordCheck: '',
+        loading: false
     };
 
+    switchLoading() {
+        this.setState({
+            loading: !this.state.loading,
+        });
+    }
+
     onSubmit = () => {
-        console.log("resetting pass");
+        const token = queryString.parse(this.props.location.search).token;
+        console.log(token);
+        this.switchLoading();
+        axios.post(`${Constants.API_URL}/reset-pass`, {
+            password: this.state.password,
+            passwordCheck: this.state.passwordCheck,
+            token: token
+        }).then(res => {
+            this.switchLoading();
+            if (res.status === 200) {
+                this.props.history.push('/')
+            }
+        }).catch(e => {
+            this.switchLoading();
+        })
+
     }
 
     render() {
-
+        const { loading } = this.state;
         return (
             <React.Fragment>
                 <div className="main">
-                    <input className="input" type="email" placeholder="Parola noua" value={this.state.password}
-                        onChange={({ target: { value } }) => {
-                            this.setState({ password: value })
-                        }} />
-                    <input className="input" type="email" placeholder="Reintroduce parola" value={this.state.passwordCheck}
-                        onChange={({ target: { value } }) => {
-                            this.setState({ passwordCheck: value })
-                        }} />
-                    <Button handleClick={this.onSubmit} buttonText="Reseteaza"></Button>
+                    <div className="content">
+                        <input className="input" type="email" placeholder="Parola noua" value={this.state.password}
+                            onChange={({ target: { value } }) => {
+                                this.setState({ password: value })
+                            }} />
+                        <input className="input" type="email" placeholder="Reintroduce parola" value={this.state.passwordCheck}
+                            onChange={({ target: { value } }) => {
+                                this.setState({ passwordCheck: value })
+                            }} />
+
+                        {loading &&
+                            <div className="loader-container">
+                                <div className="loader"></div>
+                            </div>}
+                        {!loading && <Button handleClick={this.onSubmit} buttonText="Reseteaza"></Button>}
+                    </div>
                 </div>
             </React.Fragment>
         )

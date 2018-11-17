@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import { LandingPage, Painter, ViewerFrame, Counter, SettingsModal } from './components';
+import { LandingPage, Painter, ViewerFrame, Counter, SettingsModal, PasswordResetPage } from './components';
 
 import './config/Interceptors';
 
@@ -17,6 +17,7 @@ class App extends Component {
           <Route exact path="/viewerframe" component={ViewerFrame} />
           <Route exact path="/counter" component={Counter} />
           <Route exact path="/settings" component={SettingsModal} />
+          <Route exact path="/reset-pass" component={PasswordResetPage} />
         </Switch>
       </div>
     );

@@ -4,5 +4,6 @@ import ViewerFrame from './Viewer';
 import Counter from './Counter';
 import ComplianceModal from './Compliance';
 import SettingsModal from './SettingsModal';
+import PasswordResetPage from './PasswordReset';
 
-export { LandingPage, ViewerFrame, Painter, Counter, ComplianceModal, SettingsModal };
+export { LandingPage, ViewerFrame, Painter, Counter, ComplianceModal, SettingsModal, PasswordResetPage };

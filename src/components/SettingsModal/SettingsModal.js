@@ -16,7 +16,7 @@ export default class SettingsModal extends React.Component {
 
   static defaultProps = {
     open: false,
-    close: Function.prototype,
+    closeModal: Function.prototype,
   };
 
   constructor(props) {
@@ -48,7 +48,7 @@ export default class SettingsModal extends React.Component {
     const {showPrompt} = this.state;
     return (
       <React.Fragment>
-        <Modal open={this.props.open} onClose={this.props.close}>
+        <Modal open={this.props.open} onClose={this.props.closeModal}>
           <div className="main">
             <div className="title">
               <h2>Setarile mele</h2>

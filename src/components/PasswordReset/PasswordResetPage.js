@@ -4,6 +4,7 @@ import "./PasswordResetPage.css";
 import Button from '../Button';
 import axios from 'axios';
 import * as queryString from 'query-string';
+import {NotificationManager} from "react-notifications";
 
 import Constants from '../../constants/Constants'
 
@@ -30,6 +31,7 @@ export default class PasswordResetPage extends React.Component {
         ).then(res => {
             this.switchLoading();
             if (res.status === 200) {
+                NotificationManager.success("Success");
                 this.props.history.push('/')
             }
         }).catch(e => {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { NotificationContainer } from 'react-notifications';
 
 import { LandingPage, Painter, ViewerFrame, Counter, SettingsModal, PasswordResetPage } from './components';
 
@@ -11,6 +12,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <NotificationContainer />
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/painter" component={Painter} />

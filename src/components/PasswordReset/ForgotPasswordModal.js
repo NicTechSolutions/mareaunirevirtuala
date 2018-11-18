@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Modal from 'react-responsive-modal';
 import Button from '../Button';
+import { NotificationManager } from 'react-notifications';
 
 import Constants from '../../constants/Constants';
 
@@ -35,6 +36,7 @@ export default class ForgotPasswordModal extends React.Component {
             this.switchLoading();
             console.log(res.status);
             if (res.status === 200) {
+                NotificationManager.success("Success");
                 this.onClose();
             }
         }).catch(err => {

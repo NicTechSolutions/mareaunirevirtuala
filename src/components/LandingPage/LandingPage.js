@@ -60,6 +60,7 @@ class LandingPage extends React.Component {
         {this.state.activeTab === LOGIN && (
           <React.Fragment>
             <Login onLogin={this.login} />
+            <Link handleClick={this.openForgotPassModal} text="Ai uitat parola?" direction="right" />
             <Text>SAU</Text>
             <FacebookLogin onLogin={this.login} />
             <Link handleClick={this.switchTab} text="Creați un cont" />
@@ -69,7 +70,6 @@ class LandingPage extends React.Component {
           <React.Fragment>
             <Register onRegister={this.login} />
             <Link handleClick={this.switchTab} text="Aveți deja un cont?" direction="left" />
-            <Link handleClick={this.openForgotPassModal} text="Ai uitat parola?" direction="right" />
           </React.Fragment>
         )}
         {this.state.openForgotPass &&

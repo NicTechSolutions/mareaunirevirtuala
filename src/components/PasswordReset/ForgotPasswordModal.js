@@ -31,14 +31,14 @@ export default class ForgotPasswordModal extends React.Component {
     submit = () => {
         this.switchLoading();
 
-        axios.post(`${Constants.API_URL}/email/forgot?email=${this.state.email}`).then(res => {
+        axios.post(`${Constants.API_URL}/password/forgot?email=${this.state.email}`).then(res => {
             this.switchLoading();
+            console.log(res.status);
             if (res.status === 200) {
-                console.log("ok");
+                this.onClose();
             }
         }).catch(err => {
             this.switchLoading();
-            console.log("not ok");
         })
     }
 

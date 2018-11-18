@@ -24,11 +24,10 @@ export default class PasswordResetPage extends React.Component {
         const token = queryString.parse(this.props.location.search).token;
         console.log(token);
         this.switchLoading();
-        axios.post(`${Constants.API_URL}/reset-pass`, {
-            password: this.state.password,
-            passwordCheck: this.state.passwordCheck,
-            token: token
-        }).then(res => {
+        axios.post(`${Constants.API_URL}/password/reset?token=${token}`,{
+                "newPassword": this.state.password
+            }
+        ).then(res => {
             this.switchLoading();
             if (res.status === 200) {
                 this.props.history.push('/')

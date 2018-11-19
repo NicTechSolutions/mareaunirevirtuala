@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { NotificationContainer } from 'react-notifications';
 
-import { LandingPage, Painter, ViewerFrame, Counter, SettingsModal, PasswordResetPage } from './components';
+import { LandingPage, Painter, ViewerFrame, Counter, PasswordResetPage } from './components';
+import AppContextProvider from './AppContextProvider';
 
 import './config/Interceptors';
 
@@ -18,7 +19,6 @@ class App extends Component {
           <Route exact path="/painter" component={Painter} />
           <Route exact path="/viewerframe" component={ViewerFrame} />
           <Route exact path="/counter" component={Counter} />
-          <Route exact path="/settings" component={SettingsModal} />
           <Route exact path="/reset-pass" component={PasswordResetPage} />
         </Switch>
       </div>

@@ -8,6 +8,7 @@ import Text from '../Text';
 import Link from './Link';
 import Register from './Register';
 import { ForgotPasswordModal } from '../PasswordReset';
+import ComplianceModal from '../Compliance';
 
 import './LandingPage.css';
 
@@ -22,10 +23,18 @@ class LandingPage extends React.Component {
 
     this.login = this.login.bind(this);
     this.switchTab = this.switchTab.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+
     this.state = {
       activeTab: LOGIN,
-      openForgotPass: false
+      modalOpen: true,
     };
+  }
+
+  closeModal() {
+    this.setState({
+      modalOpen: false,
+    })
   }
 
   switchTab() {
@@ -42,7 +51,6 @@ class LandingPage extends React.Component {
   }
 
   login(token) {
-    console.log(token)
     this.cookies.set("token", token);
 
     this.props.history.push('/painter');
@@ -75,6 +83,7 @@ class LandingPage extends React.Component {
         {this.state.openForgotPass &&
           <ForgotPasswordModal onClose={undefined}></ForgotPasswordModal>
         }
+        <ComplianceModal open={this.state.modalOpen} onSubmit={this.closeModal} />
       </div>
     )
   }

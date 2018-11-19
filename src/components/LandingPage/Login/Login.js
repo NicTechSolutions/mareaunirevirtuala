@@ -39,7 +39,7 @@ export default class Login extends React.Component {
       .catch(e => {
         this.switchLoading();
         this.setState({
-          error: e.response.data.message,
+          error: e.response ? e.response.data.message : "Aparent ne lovim de o problema interna, ne pare rau",
           email: '',
           password: ''
         });

@@ -1,3 +1,4 @@
 import PasswordResetPage from './PasswordResetPage';
+import ForgotPasswordModal from './ForgotPasswordModal';
 
-export default PasswordResetPage;
+export { PasswordResetPage, ForgotPasswordModal };

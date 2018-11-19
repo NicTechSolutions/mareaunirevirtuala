@@ -1,13 +1,14 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import Cookies from 'universal-cookie';
 
 import Login from './Login';
 import FacebookLogin from './FacebookLogin';
 import Text from '../Text';
 import Link from './Link';
 import Register from './Register';
+import { ForgotPasswordModal } from '../PasswordReset';
 import ComplianceModal from '../Compliance';
-import Cookies from 'universal-cookie';
 
 import './LandingPage.css';
 
@@ -55,12 +56,19 @@ class LandingPage extends React.Component {
     this.props.history.push('/painter');
   }
 
+  openForgotPassModal = () => {
+    this.setState({
+      openForgotPass: true
+    })
+  }
+
   render() {
     return (
       <div className="container">
         {this.state.activeTab === LOGIN && (
           <React.Fragment>
             <Login onLogin={this.login} />
+            <Link handleClick={this.openForgotPassModal} text="Ai uitat parola?" direction="right" />
             <Text>SAU</Text>
             <FacebookLogin onLogin={this.login} />
             <Link handleClick={this.switchTab} text="Creați un cont" />
@@ -72,6 +80,9 @@ class LandingPage extends React.Component {
             <Link handleClick={this.switchTab} text="Aveți deja un cont?" direction="left" />
           </React.Fragment>
         )}
+        {this.state.openForgotPass &&
+          <ForgotPasswordModal onClose={undefined}></ForgotPasswordModal>
+        }
         <ComplianceModal open={this.state.modalOpen} onSubmit={this.closeModal} />
       </div>
     )

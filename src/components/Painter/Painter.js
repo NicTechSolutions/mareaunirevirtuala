@@ -75,9 +75,7 @@ class Painter extends React.Component {
         </div>
         <CanvasDraw
           ref={this.toRef}
-          style={{ position: 'static' }}
-          gridColor="rgba(150,150,150,0.17)"
-          hideGrid={false}
+          style={{position: 'static'}}
           brushSize={this.state.activeBrushSize}
           brushColor={this.state.activeColor}
           canvasWidth={window.innerWidth}

@@ -28,7 +28,7 @@ class LandingPage extends React.Component {
 
     this.state = {
       activeTab: LOGIN,
-      modalOpen: this.userGDRPCompliance == null ? true : false,
+      modalOpen: this.userGDRPCompliance == null,
     };
   }
 
@@ -54,7 +54,7 @@ class LandingPage extends React.Component {
   login(token) {
     this.cookies.set("token", token);
 
-    this.props.history.push('/painter');
+    this.props.history.push('/counter');
   }
 
   openForgotPassModal = () => {

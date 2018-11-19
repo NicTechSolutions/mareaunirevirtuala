@@ -1,6 +1,6 @@
 import React from 'react';
 import CanvasDraw from 'react-canvas-draw';
- 
+
 import { withRouter } from 'react-router-dom';
 
 import Button from '../Button';
@@ -73,6 +73,9 @@ class Painter extends React.Component {
         </div>
         <CanvasDraw
           ref={this.toRef}
+          style={{position: 'static'}}
+          gridColor="rgba(150,150,150,0.17)"
+          hideGrid={false}
           brushSize={this.state.activeBrushSize}
           brushColor={this.state.activeColor}
           canvasWidth={window.innerWidth}

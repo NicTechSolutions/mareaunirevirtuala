@@ -24,14 +24,15 @@ class LandingPage extends React.Component {
     this.login = this.login.bind(this);
     this.switchTab = this.switchTab.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.userGDRPCompliance = this.cookies.get('gdpr_compliance');
 
     this.state = {
       activeTab: LOGIN,
-      modalOpen: true,
+      modalOpen: this.userGDRPCompliance == null ? true : false,
     };
   }
 
-  closeModal() {
+  closeModal(accepted) {
     this.setState({
       modalOpen: false,
     })

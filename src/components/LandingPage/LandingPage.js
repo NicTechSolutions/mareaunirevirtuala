@@ -6,6 +6,7 @@ import FacebookLogin from './FacebookLogin';
 import Text from '../Text';
 import Link from './Link';
 import Register from './Register';
+import ComplianceModal from '../Compliance';
 import Cookies from 'universal-cookie';
 
 import './LandingPage.css';
@@ -21,9 +22,18 @@ class LandingPage extends React.Component {
 
     this.login = this.login.bind(this);
     this.switchTab = this.switchTab.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+
     this.state = {
       activeTab: LOGIN,
+      modalOpen: true,
     };
+  }
+
+  closeModal() {
+    this.setState({
+      modalOpen: false,
+    })
   }
 
   switchTab() {
@@ -40,7 +50,6 @@ class LandingPage extends React.Component {
   }
 
   login(token) {
-    console.log(token)
     this.cookies.set("token", token);
 
     this.props.history.push('/painter');
@@ -63,6 +72,7 @@ class LandingPage extends React.Component {
             <Link handleClick={this.switchTab} text="Aveți deja un cont?" direction="left" />
           </React.Fragment>
         )}
+        <ComplianceModal open={this.state.modalOpen} onSubmit={this.closeModal} />
       </div>
     )
   }

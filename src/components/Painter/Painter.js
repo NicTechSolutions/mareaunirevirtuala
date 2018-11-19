@@ -1,5 +1,6 @@
 import React from 'react';
 import CanvasDraw from 'react-canvas-draw';
+import { disableBodyScroll } from 'body-scroll-lock';
 
 import { withRouter } from 'react-router-dom';
 
@@ -13,14 +14,15 @@ class Painter extends React.Component {
   constructor(props) {
     super(props);
 
-    this.toRef       = this.toRef.bind(this);
+    this.toRef = this.toRef.bind(this);
+    disableBodyScroll(this.toRef);
     this.clearCanvas = this.clearCanvas.bind(this);
     this.saveDrawing = this.saveDrawing.bind(this);
-    this.undo        = this.undo.bind(this);
+    this.undo = this.undo.bind(this);
 
     this.state = {
-      activeColor     : COLORS[0],
-      activeBrushSize : 5,
+      activeColor: COLORS[0],
+      activeBrushSize: 5,
     };
   }
 
@@ -54,26 +56,26 @@ class Painter extends React.Component {
           <div className="size">
             DIMENSIUNE:
             <div className="size-button"
-                 onClick={() => {
-                   if (this.state.activeBrushSize - 1 > 0) {
-                     this.setState({activeBrushSize : this.state.activeBrushSize - 1})
-                   }
-                 }}>-</div>
+              onClick={() => {
+                if (this.state.activeBrushSize - 1 > 0) {
+                  this.setState({ activeBrushSize: this.state.activeBrushSize - 1 })
+                }
+              }}>-</div>
             {this.state.activeBrushSize}
             <div className="size-button"
-                 onClick={() => this.setState({activeBrushSize : this.state.activeBrushSize + 1})}>+
+              onClick={() => this.setState({ activeBrushSize: this.state.activeBrushSize + 1 })}>+
             </div>
           </div>
           <div className="colors">
             {COLORS.map(color => (
-              <div key={color} className="swatch" style={{backgroundColor : color}}
-                   onClick={() => this.setState({activeColor : color})}/>
+              <div key={color} className="swatch" style={{ backgroundColor: color }}
+                onClick={() => this.setState({ activeColor: color })} />
             ))}
           </div>
         </div>
         <CanvasDraw
           ref={this.toRef}
-          style={{position: 'static'}}
+          style={{ position: 'static' }}
           gridColor="rgba(150,150,150,0.17)"
           hideGrid={false}
           brushSize={this.state.activeBrushSize}
@@ -82,9 +84,9 @@ class Painter extends React.Component {
           canvasHeight={window.innerHeight}
         />
         <div className="button-bar">
-          <Button handleClick={this.clearCanvas} buttonText="ȘTERGE"/>
-          <Button handleClick={this.undo} buttonText="ANULEAZĂ"/>
-          <Button handleClick={this.saveDrawing} buttonText="TRIMITE"/>
+          <Button handleClick={this.clearCanvas} buttonText="ȘTERGE" />
+          <Button handleClick={this.undo} buttonText="ANULEAZĂ" />
+          <Button handleClick={this.saveDrawing} buttonText="TRIMITE" />
         </div>
       </React.Fragment>
     )

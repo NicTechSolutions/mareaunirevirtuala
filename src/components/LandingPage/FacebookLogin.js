@@ -4,6 +4,9 @@ import axios from 'axios';
 
 import Constants from '../../constants/Constants';
 
+import { NotificationManager } from 'react-notifications';
+
+
 export default class FacebookLogin extends React.Component {
 
   static propTypes = {
@@ -11,7 +14,7 @@ export default class FacebookLogin extends React.Component {
   };
 
   componentDidMount() {
-    window.fbAsyncInit = function() {
+    window.fbAsyncInit = function () {
       window.FB.init({
         appId: '1775251435917996',
         cookie: true,
@@ -29,7 +32,7 @@ export default class FacebookLogin extends React.Component {
       })
     }.bind(this);
 
-    (function(d, s, id) {
+    (function (d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s);
@@ -41,11 +44,13 @@ export default class FacebookLogin extends React.Component {
 
   updateLoggedInState(response) {
     console.log(response.authResponse.accessToken);
-    axios.post(`${Constants.API_URL}/users/fb/login`, {access_token: response.authResponse.accessToken})
+    axios.post(`${Constants.API_URL}/users/fb/login`, { access_token: response.authResponse.accessToken })
       .then(res => {
-          console.log(res);
+        console.log(JSON.stringify(res));
+        this.props.onLogin(res.data.token);
+      }).catch(err => {
+          NotificationManager.error("Nu te putem inregistra cu Facebook");
       });
-    this.props.onLogin();
   }
 
   updateLoggedOutState() {
@@ -55,8 +60,8 @@ export default class FacebookLogin extends React.Component {
   render() {
     return (
       <div className="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with"
-           data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"
-           data-scope="public_profile, email"></div>
+        data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"
+        data-scope="public_profile, email"></div>
     )
   }
 }

@@ -20,12 +20,7 @@ export default class ComplianceModal extends React.Component {
     handleUserAccept = () => {
         this.setComplianceCookie(true);
         this.props.onSubmit();
-    }
-
-    handleUSerReject = () => {
-        this.setComplianceCookie(false);
-        this.props.onSubmit();
-    }
+    };
 
     setComplianceCookie(userAgreement) {
         this.cookies.set("gdpr_compliance", userAgreement);

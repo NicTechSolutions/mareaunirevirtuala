@@ -21,7 +21,7 @@ function StyledProgressbar(props) {
         // Customize the path, i.e. the part that's "complete"
         path: {
           // Tweak path color:
-          stroke: '#f88',
+          stroke: '#4D82B0',
           // Tweak path to use flat or rounded ends:
           strokeLinecap: 'butt',
           // Tweak transition animation:

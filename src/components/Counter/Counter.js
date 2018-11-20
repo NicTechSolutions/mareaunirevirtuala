@@ -37,11 +37,12 @@ class Counter extends React.Component {
   render() {
     return(
       <div className="container">
-        <div className="counter" style={{height:200 , width:200,}}>
+        <div className="counter" style={{height:200 , width:200, marginBottom: 20}}>
           <SegmentedProgressbar
             percentage={percentage}
           />
         </div>
+        <p className="submit-text">Pana acum, {percentage} de romani au desenat Romania asa cum si-au dorit!</p>
         {
           window.drawingUrl ?
             <a href={window.drawingUrl} download="My-Romania.jpeg" className="image-button">

@@ -4,21 +4,31 @@
     height: 100vh;
     width: 100%;
     display: flex;
+    align-content: center;
+    justify-content: center;
     padding: 5px;
-    background-image: url('/intro-gif.gif');
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-image: url('/logo.jpeg');
+    background-size: auto;
     background-position: center;
 }
 
 .participateButton {
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+    align-self: flex-end;
+    width: 50%;
 }
 
 @media only screen and (max-width: tabletMaxWidth) {
-    .hr-style{
-        margin: 10% 10% 10% 10%;
+    .content-container {
+        background-image: url('/intro-gif.gif');
+        background-size: cover;
+        background-repeat: no-repeat;
     }
+
+    .participateButton {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+    }
+
+    
 }

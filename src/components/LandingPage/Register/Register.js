@@ -70,7 +70,7 @@ export default class Register extends React.Component {
         {!loading && <Button handleClick={this.submit} buttonText="ÎNREGISTRARE" />}
         {loading &&
           <div class="loader-container">
-            <div class="loader"></div>
+            <div class="loader"/>
           </div>}
       </div>
     )

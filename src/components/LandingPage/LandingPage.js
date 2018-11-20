@@ -82,7 +82,7 @@ class LandingPage extends React.Component {
           </React.Fragment>
         )}
         {this.state.openForgotPass &&
-          <ForgotPasswordModal onClose={undefined}></ForgotPasswordModal>
+          <ForgotPasswordModal onClose={Function.prototype}/>
         }
         <ComplianceModal open={this.state.modalOpen} onSubmit={this.closeModal} />
       </div>

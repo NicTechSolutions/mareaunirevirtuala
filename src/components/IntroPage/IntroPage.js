@@ -5,9 +5,9 @@ import Button from '../Button';
 
 export default class IntroPage extends React.Component {
     participate = () => {
-        this.props.history.push("/");
+        this.props.history.push("/landing");
     }
-    
+
     render() {
         return (
 

@@ -62,7 +62,7 @@ constructor(props) {
 	  request.open('POST', 'https://ro100.cf/api/drawings/upload', true);
 	  request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	  request.setRequestHeader('Authorization', 'Bearer '+token);
-	  request.send('data='+data);
+	  request.send('drawing='+data);
       this.props.history.push('/counter');
     }
   }

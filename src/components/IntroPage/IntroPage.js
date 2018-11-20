@@ -1,9 +1,21 @@
 import React from 'react';
+import { disableBodyScroll } from 'body-scroll-lock';
 
 import "./IntroPage.css";
 import Button from '../Button';
 
 export default class IntroPage extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.toRef = this.toRef.bind(this);
+        disableBodyScroll(this.toRef);
+    }
+
+    toRef(el) {
+        this.bgroundRef = el;
+    }
+
     participate = () => {
         this.props.history.push("/landing");
     }
@@ -12,10 +24,7 @@ export default class IntroPage extends React.Component {
         return (
 
             <React.Fragment>
-                <div className="content-container">
-                    <img className="logo" src={"/intro-logo.jpeg"}></img>
-                    <div className="hr-style"></div>
-                    <img className="instructions" src={"/intro-instructions.jpeg"}></img>
+                <div className="content-container" ref={this.toRef}>
                     <div className="participateButton">
                         <Button handleClick={this.participate} buttonText="Vreau sa particip!"></Button>
                     </div>

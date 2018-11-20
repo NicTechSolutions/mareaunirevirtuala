@@ -27,7 +27,7 @@ class LandingPage extends React.Component {
     this.userGDRPCompliance = this.cookies.get('gdpr_compliance');
 
     this.state = {
-      activeTab: LOGIN,
+      activeTab: REGISTER,
       modalOpen: this.userGDRPCompliance == null,
     };
   }
@@ -61,7 +61,7 @@ class LandingPage extends React.Component {
     this.setState({
       openForgotPass: true
     })
-  }
+  };
 
   render() {
     return (
@@ -69,16 +69,16 @@ class LandingPage extends React.Component {
         {this.state.activeTab === LOGIN && (
           <React.Fragment>
             <Login onLogin={this.login} />
-            <Link handleClick={this.openForgotPassModal} text="Ai uitat parola?" direction="right" />
-            <Text>SAU</Text>
-            <FacebookLogin onLogin={this.login} />
+            <Link handleClick={this.openForgotPassModal} text="Ai uitat parola?" direction="left" />
             <Link handleClick={this.switchTab} text="Creați un cont" />
           </React.Fragment>
         )}
         {this.state.activeTab === REGISTER && (
           <React.Fragment>
             <Register onRegister={this.login} />
-            <Link handleClick={this.switchTab} text="Aveți deja un cont?" direction="left" />
+            <Text>SAU</Text>
+            <FacebookLogin onLogin={this.login} />
+            <Link handleClick={this.switchTab} text="Aveți deja un cont?" direction="right" />
           </React.Fragment>
         )}
         {this.state.openForgotPass &&

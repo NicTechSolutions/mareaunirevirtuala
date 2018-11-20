@@ -8,7 +8,7 @@ import './Compliance.css';
 
 export default class ComplianceModal extends React.Component {
     cookies = new Cookies();
-   
+
     static propTypes = {
         onSubmit: PropTypes.func.isRequired,
         open: PropTypes.bool,
@@ -33,7 +33,7 @@ export default class ComplianceModal extends React.Component {
 
     render() {
         return (
-            <Modal open={this.props.open} showCloseIcon={false}>
+            <Modal open={this.props.open} showCloseIcon={false} onClose={Function.prototype}>
                 <div className="compliance-info">
                     RO100 utilizeaza fisiere de tip cookie pentru a imbunatati experienta
                     si interactiunea ta cu acest website. Confidentialitatea ta este importanta,

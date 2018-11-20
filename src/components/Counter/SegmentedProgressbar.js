@@ -73,7 +73,7 @@ function SegmentedProgressbar(props) {
       }}
       renderOverlays={() =>
         getRadialSeparators(20).concat(
-          <div style={{ fontSize: 50, color: '#f88' }}>
+          <div style={{ fontSize: 50, color: '#4D82B0' }}>
             {props.percentage}%
           </div>,
         )

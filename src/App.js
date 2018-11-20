@@ -5,8 +5,6 @@ import { NotificationContainer } from 'react-notifications';
 import { LandingPage, Painter, ViewerFrame, Counter, PasswordResetPage, IntroPage } from './components';
 import './config/Interceptors';
 
-import './App.css';
-
 class App extends Component {
   render() {
     return (

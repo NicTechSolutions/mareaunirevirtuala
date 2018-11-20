@@ -1,5 +1,5 @@
 .link {
-    color: #f4511e;
+    color: #4D82B0;
     cursor: pointer;
     transition: 0.5s;
     position: relative;
@@ -7,7 +7,7 @@
 
 .right:after {
     content: '\2192';
-    color: #f4511e;
+    color: #4D82B0;
     position: absolute;
     opacity: 0;
     top: 0;
@@ -21,7 +21,7 @@
 
 .left:before {
     content: '\2190';
-    color: #f4511e;
+    color: #4D82B0;
     position: absolute;
     opacity: 0;
     top: 0;

@@ -24,7 +24,7 @@ constructor(props) {
 
     this.state = {
       activeColor: COLORS[0],
-      activeBrushSize: 5,
+      activeBrushSize: 10,
     };
   }
 
@@ -39,7 +39,7 @@ constructor(props) {
   }
 
   undo() {
-    if (this.canvas) { 
+    if (this.canvas) {
       this.canvas.undo();
     }
   }
@@ -50,15 +50,15 @@ constructor(props) {
 	  var data = this.canvas.canvas.toDataURL();
 	  var token = this.cookies.get('token');
 	  var request = new XMLHttpRequest();
-	  
+
 	  request.onreadystatechange = function(){
-		  if(request.readyState == 4 && request.status == 200){
+		  if(request.readyState === 4 && request.status === 200){
 			//do our stuff
 			var response = request.responseText;
 			console.log(response);
 		  }
-	  }
-	  
+	  };
+
 	  request.open('POST', 'https://ro100.cf/api/drawings/upload', true);
 	  request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	  request.setRequestHeader('Authorization', 'Bearer '+token);

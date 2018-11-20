@@ -44,20 +44,19 @@ class Counter extends React.Component {
         </div>
         {
           window.drawingUrl ?
-            <a href={window.drawingUrl} download="My-Romania.jpeg">
-              <img src={downloadIcon} className="image"/>
+            <a href={window.drawingUrl} download="My-Romania.jpeg" className="image-button">
+              <img src={downloadIcon} alt="descarca" className="image"/>
               <div>DESCARCĂ</div>
             </a> :
-            <button onClick={this.navigateToPainter}>
-              <img src={drawIcon} className="image"/>
+            <div onClick={this.navigateToPainter} className="image-button">
+              <img src={drawIcon} alt="deseneaza" className="image"/>
               <div>DESENEAZA</div>
-            </button>
+            </div>
         }
-        <button onClick={this.toggleModal}>
-          <img src={settingsIcon} className="image"/>
+        <div onClick={this.toggleModal} className="image-button">
+          <img src={settingsIcon} alt="setari" className="image"/>
           <div>SETARI</div>
-        </button>
-        {/*<Button handleClick={this.toggleModal} buttonText="SETARI"/>*/}
+        </div>
         <SettingsModal open={this.state.modalOpen} closeModal={this.toggleModal}/>
       </div>
     );

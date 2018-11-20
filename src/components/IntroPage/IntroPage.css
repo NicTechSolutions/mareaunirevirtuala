@@ -4,9 +4,9 @@
 .content-container {
     height: 100vh;
     width: 100%;
-    margin-top: 20px;
+    display: flex;
     padding: 5px;
-    background-image: url('/intro-logo-gif.gif');
+    background-image: url('/intro-gif.gif');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -14,10 +14,8 @@
 
 .participateButton {
     position: fixed;
-    bottom: 50%;
-    width: 60%;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 100%;
+    bottom: 0;
 }
 
 @media only screen and (max-width: tabletMaxWidth) {

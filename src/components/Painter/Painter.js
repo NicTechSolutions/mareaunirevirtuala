@@ -46,8 +46,8 @@ constructor(props) {
 
   saveDrawing() {
     if (this.canvas) {
-      window.drawingUrl = this.canvas.canvas.toDataURL();
-	  var data = this.canvas.canvas.toDataURL();
+      window.drawingUrl = this.canvas.canvas.toDataURL('image/jpeg');
+	  var data = this.canvas.canvas.toDataURL('image/jpeg');
 	  var token = this.cookies.get('token');
 	  var request = new XMLHttpRequest();
 

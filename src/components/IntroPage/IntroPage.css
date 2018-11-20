@@ -7,9 +7,17 @@
     align-content: center;
     justify-content: center;
     padding: 5px;
-    background-image: url('/logo.jpeg');
-    background-size: auto;
+    background-image: url('/intro-desktop.gif');
+    background-size: cover;
     background-position: center;
+}
+
+.logoDesktop {
+    background-image: url('/logo.png');
+    background-size: contain;
+    background-position: center;
+    height: 100%;
+    width: 100%;
 }
 
 .participateButton {
@@ -19,7 +27,7 @@
 
 @media only screen and (max-width: tabletMaxWidth) {
     .content-container {
-        background-image: url('/intro-gif.gif');
+        background-image: url('/intro-mobile.gif');
         background-size: cover;
         background-repeat: no-repeat;
     }
@@ -28,6 +36,11 @@
         position: absolute;
         width: 100%;
         bottom: 0;
+    }
+
+    .logoDesktop {
+        display: none;
+        visibility: hidden;
     }
 
     

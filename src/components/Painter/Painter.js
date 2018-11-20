@@ -1,6 +1,7 @@
 import React from 'react';
 import CanvasDraw from 'react-canvas-draw';
 import { disableBodyScroll } from 'body-scroll-lock';
+import Cookies from 'universal-cookie';
 
 import { withRouter } from 'react-router-dom';
 
@@ -11,7 +12,8 @@ import './Painter.css'
 const COLORS = ['red', 'yellow', 'blue'];
 
 class Painter extends React.Component {
-  constructor(props) {
+cookies = new Cookies();
+constructor(props) {
     super(props);
 
     this.toRef = this.toRef.bind(this);
@@ -37,7 +39,7 @@ class Painter extends React.Component {
   }
 
   undo() {
-    if (this.canvas) {
+    if (this.canvas) { 
       this.canvas.undo();
     }
   }
@@ -45,7 +47,23 @@ class Painter extends React.Component {
   saveDrawing() {
     if (this.canvas) {
       window.drawingUrl = this.canvas.canvas.toDataURL();
-      this.props.history.push('/counter')
+	  var data = this.canvas.canvas.toDataURL();
+	  var token = this.cookies.get('token');
+	  var request = new XMLHttpRequest();
+	  
+	  request.onreadystatechange = function(){
+		  if(request.readyState == 4 && request.status == 200){
+			//do our stuff
+			var response = request.responseText;
+			console.log(response);
+		  }
+	  }
+	  
+	  request.open('POST', 'https://ro100.cf/api/drawings/upload', true);
+	  request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	  request.setRequestHeader('Authorization', 'Bearer '+token);
+	  request.send('data='+data);
+      this.props.history.push('/counter');
     }
   }
 

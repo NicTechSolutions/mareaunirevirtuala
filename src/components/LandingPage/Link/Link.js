@@ -12,7 +12,7 @@ export default class Link extends React.Component {
   };
 
   static defaultProps = {
-    direction: 'right'
+    direction: ''
   };
 
   render() {

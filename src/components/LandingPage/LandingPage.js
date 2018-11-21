@@ -66,12 +66,12 @@ class LandingPage extends React.Component {
   render() {
     return (
       <div className="container">
-        <img src={"/logo.png"} className="logo"></img>
+        <img src={"/logo.png"} alt="logo" className="logo"/>
         {this.state.activeTab === LOGIN && (
           <React.Fragment>
             <Login onLogin={this.login} />
-            <Link handleClick={this.openForgotPassModal} text="Ai uitat parola?" direction="left" />
-            <Link handleClick={this.switchTab} text="Creați un cont" />
+            <Link handleClick={this.openForgotPassModal} text="Ai uitat parola?" />
+            <Link handleClick={this.switchTab} text="Creați un cont" direction="left" />
           </React.Fragment>
         )}
         {this.state.activeTab === REGISTER && (

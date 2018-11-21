@@ -1,9 +1,9 @@
+import React from 'react';
 import cameraData from '../assets/camera_para.dat';
 import hiro from '../assets/path.hiro';
 
-/* globals THREEx */
 
-const { ArMarkerControls, ArToolkitContext, ArToolkitSource } = THREEx;
+
 /**
  * Initialize AR Toolkit from our three.js objects so that it can detect the Hiro marker
  *
@@ -12,53 +12,88 @@ const { ArMarkerControls, ArToolkitContext, ArToolkitSource } = THREEx;
  * @param {Array} onRenderFcts an array of functions which will be executed every frames
  * @returns {Object} An ArToolkitContext instance
  */
+let ArMarkerControls;
+let ArToolkitContext;
+let ArToolkitSource;
+let Color;
+let WebGLRenderer;
 
-export function initializeArToolkit(renderer, camera, onRenderFcts) {
-    ArToolkitContext.baseURL = '../';
-    const arToolkitSource = new ArToolkitSource({ sourceType : 'webcam' });
+export default class ArToolkit extends React.Component {
+    componentWillMount() {
+        var s = document.createElement('script');
+        s.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/85/three.min.js";
+        document.head.appendChild(s);
+        var s2 = document.createElement('script');
+        s2.src = "https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js";
+        document.head.appendChild(s2);
+    }
 
-    arToolkitSource.init(() => {
-        arToolkitSource.onResize(renderer.domElement);
-    });
+    componentDidMount() {
+        ArMarkerControls = window.THREEx.ArMarkerControls;
+        ArToolkitSource = window.THREEx.ArToolkitSource;
+        ArToolkitContext = window.THREEx.ArToolkitContext;
+    }
 
-    window.addEventListener('resize', () => {
-        arToolkitSource.onResize(renderer.domElement);
-    });
+    static initializeArToolkit(renderer, camera, onRenderFcts) {
+        ArToolkitContext.baseURL = '../';
+        const arToolkitSource = new ArToolkitSource({ sourceType: 'webcam' });
 
-    // create an arToolkitContext
-    const arToolkitContext = new ArToolkitContext({
-        cameraParametersUrl: cameraData,
-        // THe hiro marker is monochrome
-        detectionMode: 'mono',
-        maxDetectionRate: 30,
-        // The two following settings adjusts the resolution. Higher is better (less flickering) but slower
-        canvasWidth: 800,
-        canvasHeight: 600,
-    });
+        arToolkitSource.init(() => {
+            arToolkitSource.onResize(renderer.domElement);
+        });
 
-    arToolkitContext.init(() => {
-        camera.projectionMatrix.copy(arToolkitContext.getProjectionMatrix());
-    });
+        window.addEventListener('resize', () => {
+            arToolkitSource.onResize(renderer.domElement);
+        });
 
-    // update artoolkit on every frame
-    onRenderFcts.push(() => {
-        if(arToolkitSource.ready === false) return;
-        arToolkitContext.update(arToolkitSource.domElement);
-    });
+        // create an arToolkitContext
+        const arToolkitContext = new ArToolkitContext({
+            cameraParametersUrl: cameraData,
+            // THe hiro marker is monochrome
+            detectionMode: 'mono',
+            maxDetectionRate: 30,
+            // The two following settings adjusts the resolution. Higher is better (less flickering) but slower
+            canvasWidth: 800,
+            canvasHeight: 600,
+        });
 
-    return arToolkitContext;
-}
+        arToolkitContext.init(() => {
+            camera.projectionMatrix.copy(arToolkitContext.getProjectionMatrix());
+        });
 
-/**
- * Initialize AR Toolkit Hiro marker
- *
- * @param {Object} arToolkitContext: the ArToolkitContext instance
- * @param {Object} markerRoot a DOM element where to put the marker
- * @returns {Object} An ArMarkerControls instance
- */
-export function getMarker(arToolkitContext, markerRoot) {
-    return new ArMarkerControls(arToolkitContext, markerRoot, {
-        type : 'pattern',
-        patternUrl : hiro,
-    });
+        // update artoolkit on every frame
+        onRenderFcts.push(() => {
+            if (arToolkitSource.ready === false) return;
+            arToolkitContext.update(arToolkitSource.domElement);
+        });
+
+        return arToolkitContext;
+    }
+
+    /**
+     * Initialize AR Toolkit Hiro marker
+     *
+     * @param {Object} arToolkitContext: the ArToolkitContext instance
+     * @param {Object} markerRoot a DOM element where to put the marker
+     * @returns {Object} An ArMarkerControls instance
+     */
+    static getMarker(arToolkitContext, markerRoot) {
+        return new ArMarkerControls(arToolkitContext, markerRoot, {
+            type: 'pattern',
+            patternUrl: hiro,
+        });
+    }
+
+    static initializeRenderer(canvas) {
+        const renderer = new WebGLRenderer({ alpha: true, canvas });
+
+        renderer.setClearColor(new Color('lightgrey'), 0);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.domElement.style.position = 'absolute';
+        renderer.domElement.style.top = '0px';
+        renderer.domElement.style.left = '0px';
+    
+        return renderer;
+    }
+
 }

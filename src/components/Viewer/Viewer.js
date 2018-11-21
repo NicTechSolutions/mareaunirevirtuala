@@ -1,18 +1,27 @@
 import React from 'react';
-import { initializeArToolkit, getMarker } from '../../utils/arToolkit';
-import initializeRenderer from '../../utils/initializeRenderer';
-
-const { Camera, DoubleSide, Group, Mesh, MeshBasicMaterial, PlaneGeometry, Scene } = window.THREE;
+import ArToolkit from '../../utils/arToolkit';
 
 export default class Viewer extends React.Component {
+
+    componentWillMount() {
+        var s = document.createElement('script');
+        s.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/85/three.min.js";
+        document.head.appendChild(s);
+        var s2 = document.createElement('script');
+        s2.src = "https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js";
+        document.head.appendChild(s2);
+    }
+
     componentDidMount() {
         const {
             texture
         } = this.props;
 
+        const { Camera, DoubleSide, Group, Mesh, MeshBasicMaterial, PlaneGeometry, Scene } = window.THREE;
+
         // initializeRenderer instanciate a new WebGlRenderer from three.js with some options
         // for opacity, size, etc.
-        const renderer = this.renderer = initializeRenderer(this.canvas);
+        const renderer = this.renderer = ArToolkit.initializeRenderer(this.canvas);
 
         const scene = new Scene();
         const camera = new Camera();
@@ -21,16 +30,16 @@ export default class Viewer extends React.Component {
         const markerRoot = new Group();
         scene.add(markerRoot);
         const onRenderFcts = []; // Array of functions called for each rendering frames
-        const arToolkitContext = initializeArToolkit(renderer, camera, onRenderFcts);
-        getMarker(arToolkitContext, markerRoot);
+        const arToolkitContext = ArToolkit.initializeArToolkit(renderer, camera, onRenderFcts);
+        ArToolkit.getMarker(arToolkitContext, markerRoot);
 
         // The fun begins: instantiate the plane on which to draw our image
         // It will be oriented correctly by arToolKit depending on the marker orientation
         const geometry = new PlaneGeometry(3, 2, 1);
 
-         // Create a texture for our image
-        
-         // const texture = new Texture(image);
+        // Create a texture for our image
+
+        // const texture = new Texture(image);
         texture.needsUpdate = true; // This instruct three.js to update this object at next render
 
         const opacity = 1;

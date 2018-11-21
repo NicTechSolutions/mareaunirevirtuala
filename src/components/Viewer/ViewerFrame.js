@@ -1,17 +1,25 @@
 import React from 'react';
 import Viewer from './Viewer';
 
-const { ImageUtils } = window.THREE;
+let ImageUtils;
 export default class ViewerFrame extends React.Component {
     state = {
         image: null,
     };
 
+    componentWillMount() {
+        var s = document.createElement('script');
+        s.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/85/three.min.js";
+        document.head.appendChild(s);
+    }
 
     componentDidMount(props) {
         console.log("in viewer frame");
         let context = this;
-        const image = ImageUtils.loadTexture("/test_4096x1936.png", undefined, function () {
+        
+        ImageUtils = window.THREE.ImageUtils;
+
+        const image =  ImageUtils.loadTexture("/test_4096x1936.png", undefined, function () {
             context.setState({ image });
             console.log('loaded img');
         });

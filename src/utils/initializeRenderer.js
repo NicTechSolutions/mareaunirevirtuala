@@ -1,5 +1,4 @@
 /* globals THREE */
-const { Color, WebGLRenderer } = THREE;
 
 export default (canvas) => {
     const renderer = new WebGLRenderer({ alpha: true, canvas });

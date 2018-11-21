@@ -2,6 +2,7 @@ import React from 'react';
 import CanvasDraw from 'react-canvas-draw';
 import { disableBodyScroll } from 'body-scroll-lock';
 import Cookies from 'universal-cookie';
+import classNames from 'classnames';
 
 import { withRouter } from 'react-router-dom';
 
@@ -86,7 +87,7 @@ constructor(props) {
           </div>
           <div className="colors">
             {COLORS.map(color => (
-              <div key={color} className="swatch" style={{ backgroundColor: color }}
+              <div key={color} className={classNames('swatch', {active: color === this.state.activeColor})} style={{ backgroundColor: color }}
                 onClick={() => this.setState({ activeColor: color })} />
             ))}
           </div>

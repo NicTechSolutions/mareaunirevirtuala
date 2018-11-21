@@ -66,6 +66,7 @@ class LandingPage extends React.Component {
   render() {
     return (
       <div className="container">
+        <img src={"/logo.png"} className="logo"></img>
         {this.state.activeTab === LOGIN && (
           <React.Fragment>
             <Login onLogin={this.login} />
@@ -82,7 +83,7 @@ class LandingPage extends React.Component {
           </React.Fragment>
         )}
         {this.state.openForgotPass &&
-          <ForgotPasswordModal onClose={Function.prototype}/>
+          <ForgotPasswordModal onClose={Function.prototype} />
         }
         <ComplianceModal open={this.state.modalOpen} onSubmit={this.closeModal} />
       </div>

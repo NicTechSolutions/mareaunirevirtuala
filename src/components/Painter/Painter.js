@@ -70,7 +70,7 @@ class Painter extends React.Component {
         }
       };
 
-      request.open('POST', 'https://ro100.cf/api/drawings/upload', true);
+      request.open('POST', `${Constants.API_URL}/drawings/upload`, true);
       request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       request.setRequestHeader('Authorization', 'Bearer ' + token);
       request.send('drawing=' + data);

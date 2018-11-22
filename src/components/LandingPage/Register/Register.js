@@ -28,7 +28,12 @@ export default class Register extends React.Component {
 
   submit() {
     this.switchLoading();
-    axios.post(`${Constants.API_URL}/users/register`, { ...this.state })
+    const data = { 
+      name: this.state.name, 
+      email: this.state.email, 
+      password: this.state.password
+    };
+    axios.post(`${Constants.API_URL}/users/register`, data)
       .then(res => {
         this.switchLoading();
         if (res.status === 200) {

@@ -5,6 +5,7 @@ import Cookies from 'universal-cookie';
 import classNames from 'classnames';
 
 import {withRouter} from 'react-router-dom';
+import Constants from '../../constants/Constants';
 
 import Button from '../Button';
 

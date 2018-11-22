@@ -24,7 +24,7 @@ export default class IntroPage extends React.Component {
         return (
 
             <React.Fragment>
-                <div className="content-container" ref={this.toRef}>
+                <div className="content-container" >
                     <div className="participateButton">
                         <Button handleClick={this.participate} buttonText="Vreau sa particip!" />
                     </div>

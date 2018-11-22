@@ -7,13 +7,13 @@
     align-content: center;
     justify-content: center;
     padding: 5px;
-    background-image: url('/intro-desktop.gif');
+    /*background-image: url('/intro-desktop.gif');*/
     background-size: cover;
     background-position: center;
 }
 
 .logoDesktop {
-    background-image: url('/logo.png');
+    /*background-image: url('/logo.png');*/
     background-size: contain;
     background-position: center;
     height: 100%;
@@ -21,21 +21,27 @@
 }
 
 .participateButton {
-    align-self: flex-end;
-    width: 50%;
+    /*align-self: flex-end;
+    width: 50%;*/
+    display: block;
+    max-width: 300px;
+    margin: auto;
 }
 
 @media only screen and (max-width: tabletMaxWidth) {
     .content-container {
-        background-image: url('/intro-mobile.gif');
+        /*background-image: url('/intro-mobile.gif');*/
         background-size: cover;
         background-repeat: no-repeat;
     }
 
     .participateButton {
-        position: absolute;
+        /*position: absolute;
         width: 100%;
-        bottom: 0;
+        bottom: 0;*/
+        display: block;
+        max-width: 300px;
+        margin: auto;
     }
 
     .logoDesktop {

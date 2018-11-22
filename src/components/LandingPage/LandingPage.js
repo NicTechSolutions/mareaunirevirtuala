@@ -66,7 +66,7 @@ class LandingPage extends React.Component {
   render() {
     return (
       <div className="container">
-        <img src={"/logo.png"} alt="logo" className="logo"/>
+        {/*<img src={"/logo.png"} alt="logo" className="logo"/> */}
         {this.state.activeTab === LOGIN && (
           <React.Fragment>
             <Login onLogin={this.login} />

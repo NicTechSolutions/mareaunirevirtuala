@@ -66,20 +66,18 @@ class LandingPage extends React.Component {
   render() {
     return (
       <div className="container">
-        <img src={"/logo.png"} alt="logo" className="logo"/>
         {this.state.activeTab === LOGIN && (
           <React.Fragment>
             <Login onLogin={this.login} />
-            <Link handleClick={this.openForgotPassModal} text="Ai uitat parola?" />
-            <Link handleClick={this.switchTab} text="Creați un cont" direction="left" />
+            <Link handleClick={this.openForgotPassModal} text="Ai uitat parola?" direction="right"/>
+            <Link handleClick={this.switchTab} text="Crează un cont" direction="right" />
           </React.Fragment>
         )}
         {this.state.activeTab === REGISTER && (
           <React.Fragment>
             <Register onRegister={this.login} />
-            <Text>SAU</Text>
             <FacebookLogin onLogin={this.login} />
-            <Link handleClick={this.switchTab} text="Aveți deja un cont?" direction="right" />
+            <Link handleClick={this.switchTab} text="Ai deja un cont?" direction="right" />
           </React.Fragment>
         )}
         {this.state.openForgotPass &&

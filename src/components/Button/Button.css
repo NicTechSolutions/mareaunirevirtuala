@@ -1,10 +1,20 @@
+@value main-red from '../../styles/colors.css';
+
 .button {
-    background-color: #4D82B0;
+    background-color: main-red;
     border: none;
+    border-radius: 10px;
+    margin: 5px;
     color: white;
     padding: 16px;
     text-align: center;
-    font-size: 16px;
+    font-family: Lato;
+    font-size: 15px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
     opacity: 0.8;
     transition: 0.3s;
     display: inline-block;

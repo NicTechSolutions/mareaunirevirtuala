@@ -1,8 +1,28 @@
+@value tabletMaxWidth from '../../../styles/media.css';
+
+
 .link {
     color: #4D82B0;
+    margin: 4px;
     cursor: pointer;
+    width: 50%;
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
     transition: 0.5s;
     position: relative;
+}
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
 }
 
 .right:after {
@@ -11,7 +31,7 @@
     position: absolute;
     opacity: 0;
     top: 0;
-    right: -20px;
+    right: -100px;
     transition: 0.5s;
 }
 
@@ -40,4 +60,11 @@
 
 .link:hover:before {
     opacity: 1;
+}
+
+
+@media only screen and (max-width: tabletMaxWidth) {
+    .link {
+        width: 100%;
+    }
 }

@@ -6,6 +6,7 @@ import Constants from '../../constants/Constants';
 
 import { NotificationManager } from 'react-notifications';
 
+import './FacebookLogin.css';
 
 export default class FacebookLogin extends React.Component {
 
@@ -54,7 +55,7 @@ export default class FacebookLogin extends React.Component {
   }
 
   updateLoggedOutState() {
-    console.log('log out')
+    console.log('log out');
   }
 
   render() {

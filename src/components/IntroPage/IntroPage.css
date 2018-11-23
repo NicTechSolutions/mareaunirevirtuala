@@ -1,5 +1,9 @@
 @value tabletMaxWidth from '../../styles/media.css';
 
+.container {
+    width: 30%;
+}
+
 .submit-button {
     width: 90%;
     position:  absolute;
@@ -7,18 +11,24 @@
     bottom: 0;
 }
 
+.logo-intro {
+    margin: 20px;
+}
 .checked {
     width: 33px;
     height: 33px;
     display: inline-block;
     background-image: url("/checked.svg");
     background-position: center;
+    background-size: contain;
+
 }
 .rect {
     width: 33px;
-    height: 33px;
+    height: 50px;
     margin-top: -8px;
     background-image: url("/rectangle.svg");
+    background-size: contain;
     background-position: center;
 
 }
@@ -29,23 +39,42 @@
     background-image: url("/pencil.svg");
     background-position: center;
     display: inline-block;
+    background-size: contain;
+
 }
 .romania {
     width: 33px;
     height: 33px;
-    margin-top: -7px;
+    margin-top: -10px;
     background-image: url("/romania.svg");
     background-position: center;
+    background-size: contain;
     display: inline-block;
+
 }
 
 .inline {
     display:inherit;
+    display: flex;
 }
+
 .text {
     display:inline-block;
+    flex: 1;
     margin-left: 10px;
+    color: white;
+    text-align: left;
+    font-family: Lato;
+    font-size: 15px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
     
 }
 @media only screen and (max-width: tabletMaxWidth) {
+    .container {
+        width: 100%;
+    }
 }

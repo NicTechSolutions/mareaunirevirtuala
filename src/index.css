@@ -54,9 +54,23 @@ h6 {
   outline: none;
 }
 
+.logo {
+  background-image: url("/logo.svg");
+  height: 250px;
+  width: 200px;
+  margin: 10px;
+  margin-bottom: 30px;
+  background-size: cover;
+}
 
 @media only screen and (max-width: tabletMaxWidth) {
   .input {
     border: solid 1px #4D82B0;
-}
+  }
+
+  .logo {
+    height: 150px;
+    width: 100px;
+  }
+  
 }

@@ -43,10 +43,10 @@ function RadialSeparator(props) {
   return (
     <div
       style={{
-        background: '#fff',
-        width: '3px',
-        height: '100%',
-        transform: `rotate(${props.degrees}deg)`,
+        // background: '#fff',
+        // width: '3px',
+        // height: '0%',
+        // transform: `rotate(${props.degrees}deg)`,
       }}
     />
   );
@@ -73,7 +73,7 @@ function SegmentedProgressbar(props) {
       }}
       renderOverlays={() =>
         getRadialSeparators(20).concat(
-          <div style={{ fontSize: 50, color: '#4D82B0' }}>
+          <div style={{ fontSize: 50, color: '#ffffff' }}>
             {props.text}
           </div>,
         )

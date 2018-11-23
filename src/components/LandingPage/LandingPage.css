@@ -5,3 +5,12 @@
     height: 100vh;
     justify-content: center;
 }
+
+.logo {
+    background-image: url("/logo.svg");
+    height: 150px;
+    width: 100px;
+    margin: 10px;
+    margin-bottom: 30px;
+    background-size: cover;
+}

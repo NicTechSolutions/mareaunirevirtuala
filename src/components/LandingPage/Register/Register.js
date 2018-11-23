@@ -63,13 +63,13 @@ export default class Register extends React.Component {
     return (
       <div className="register">
         {error && <div class="error alert-danger">{error}</div>}
-        <input className="input" type="text" placeholder="NUME" value={this.state.name} onChange={({ target: { value } }) => {
+        <input className="input" type="text" placeholder="Nume" value={this.state.name} onChange={({ target: { value } }) => {
           this.setState({ name: value })
         }} />
-        <input className="input" type="email" placeholder="EMAIL" value={this.state.email} onChange={({ target: { value } }) => {
+        <input className="input" type="email" placeholder="Email" value={this.state.email} onChange={({ target: { value } }) => {
           this.setState({ email: value })
         }} />
-        <input className="input" type="password" placeholder="PAROLĂ" value={this.state.password} onChange={({ target: { value } }) => {
+        <input className="input" type="password" placeholder="Parola" value={this.state.password} onChange={({ target: { value } }) => {
           this.setState({ password: value })
         }} />
         {!loading && <Button handleClick={this.submit} buttonText="ÎNREGISTRARE" />}

@@ -2,7 +2,7 @@
 
 
 .link {
-    color: #4D82B0;
+    color: #ffffff;
     margin: 4px;
     cursor: pointer;
     width: 50%;
@@ -27,7 +27,7 @@
 
 .right:after {
     content: '\2192';
-    color: #4D82B0;
+    color: #ffffff;
     position: absolute;
     opacity: 0;
     top: 0;
@@ -41,7 +41,7 @@
 
 .left:before {
     content: '\2190';
-    color: #4D82B0;
+    color: #ffffff;
     position: absolute;
     opacity: 0;
     top: 0;

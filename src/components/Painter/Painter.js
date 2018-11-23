@@ -2,8 +2,8 @@ import React from 'react';
 import CanvasDraw from 'react-canvas-draw';
 import { disableBodyScroll } from 'body-scroll-lock';
 import Cookies from 'universal-cookie';
-import classNames from 'classnames';
 import { Slider } from 'material-ui-slider';
+import classNames from 'classnames';
 
 import { withRouter } from 'react-router-dom';
 import Constants from '../../constants/Constants';
@@ -15,6 +15,7 @@ import './Painter.css';
 const COLORS = ['red', 'yellow', 'blue'];
 
 class Painter extends React.Component {
+
   cookies = new Cookies();
 
   constructor(props) {
@@ -29,7 +30,9 @@ class Painter extends React.Component {
     this.state = {
       activeColor: COLORS[0],
       activeBrushSize: 10,
-      size: 10
+      size: 10,
+      toggleSizer: false,
+      toggleColors: false
     };
   }
 
@@ -91,36 +94,71 @@ class Painter extends React.Component {
 
   }
 
+  onToggleSizer = () => {
+    this.setState({
+      toggleSizer: !this.state.toggleSizer
+    })
+  }
+
+  onToggleColors = () => {
+    console.log("togglings colors");
+    this.setState({
+      toggleColors: !this.state.toggleColors
+    })
+  }
+
   render() {
     return (
       <React.Fragment>
-        <div className="slider-container">
-          <Slider
-            defaultValue={this.state.activeBrushSize}
-            onChange={this.onChange}>
-          </Slider>
+        <div className="draw-container " >
+          <div className="header">
+            <div className="dropdown">
+              <div className="dropdown-header" onClick={this.onToggleColors}>
+                <div className={classNames('swatch', { active: true })}
+                  style={{ backgroundColor: this.state.activeColor }}/>
+
+              </div>
+              <div className="dropdown-content" hidden={!this.state.toggleColors}>
+                <div className="colors">
+                  {COLORS.map(color => (
+                    <div key={color} className={classNames('swatch', { active: color === this.state.activeColor })}
+                      style={{ backgroundColor: color }}
+                      onClick={() => this.setState({ activeColor: color })} />
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="dropdown">
+              <div className="dropdown-header">
+                <div className="pencil-drop-icon" onClick={this.onToggleSizer}></div>
+              </div>
+              <div className="dropdown-content" hidden={!this.state.toggleSizer}>
+                <div className="slider-container" >
+                  <Slider
+                    defaultValue={this.state.activeBrushSize}
+                    onChange={this.onChange}>
+                  </Slider>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="drawing-canvas-container " onTouchStart={() => this.setState({toggleColors: false, toggleSizer:false})}>
+            <CanvasDraw
+              ref={this.toRef}
+              style={{ position: 'static' }}
+              canvasWidth={window.innerWidth}
+              canvasHeight={window.innerWidth}
+              brushSize={this.state.activeBrushSize}
+              brushColor={this.state.activeColor}
+            />
+          </div>
+          <div className="button-bar">
+            <Button handleClick={this.clearCanvas} buttonText="ȘTERGE" />
+            <Button handleClick={this.undo} buttonText="ANULEAZĂ" />
+            <Button handleClick={this.saveDrawing} buttonText="TRIMITE" />
+          </div>
         </div>
-        <div className="colors">
-          {COLORS.map(color => (
-            <div key={color} className={classNames('swatch', { active: color === this.state.activeColor })}
-              style={{ backgroundColor: color }}
-              onClick={() => this.setState({ activeColor: color })} />
-          ))}
-        </div>
-        <CanvasDraw
-          ref={this.toRef}
-          style={{ position: 'static' }}
-          brushSize={this.state.activeBrushSize}
-          brushColor={this.state.activeColor}
-          canvasWidth={window.innerWidth}
-          canvasHeight={window.innerHeight}
-        />
-        <div className="button-bar">
-          <Button handleClick={this.clearCanvas} buttonText="ȘTERGE" />
-          <Button handleClick={this.undo} buttonText="ANULEAZĂ" />
-          <Button handleClick={this.saveDrawing} buttonText="TRIMITE" />
-        </div>
-      </React.Fragment>
+      </React.Fragment >
     );
   }
 }

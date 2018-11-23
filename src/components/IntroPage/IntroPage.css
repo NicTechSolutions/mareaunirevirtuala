@@ -1,47 +1,51 @@
 @value tabletMaxWidth from '../../styles/media.css';
 
-.content-container {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    padding: 5px;
-    background-image: url('/intro-desktop.gif');
-    background-size: cover;
+.submit-button {
+    width: 90%;
+    position:  absolute;
+    margin-bottom: 20px;
+    bottom: 0;
+}
+
+.checked {
+    width: 33px;
+    height: 33px;
+    display: inline-block;
+    background-image: url("/checked.svg");
     background-position: center;
 }
-
-.logoDesktop {
-    background-image: url('/logo.png');
-    background-size: contain;
+.rect {
+    width: 33px;
+    height: 33px;
+    margin-top: -8px;
+    background-image: url("/rectangle.svg");
     background-position: center;
-    height: 100%;
-    width: 100%;
+
+}
+.pencil {
+    width: 33px;
+    height: 33px;
+    margin-top: -8px;
+    background-image: url("/pencil.svg");
+    background-position: center;
+    display: inline-block;
+}
+.romania {
+    width: 33px;
+    height: 33px;
+    margin-top: -7px;
+    background-image: url("/romania.svg");
+    background-position: center;
+    display: inline-block;
 }
 
-.participateButton {
-    align-self: flex-end;
-    width: 50%;
+.inline {
+    display:inherit;
 }
-
-@media only screen and (max-width: tabletMaxWidth) {
-    .content-container {
-        background-image: url('/intro-mobile.gif');
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
-
-    .participateButton {
-        position: absolute;
-        width: 100%;
-        bottom: 0;
-    }
-
-    .logoDesktop {
-        display: none;
-        visibility: hidden;
-    }
-
+.text {
+    display:inline-block;
+    margin-left: 10px;
     
+}
+@media only screen and (max-width: tabletMaxWidth) {
 }

@@ -9,7 +9,9 @@ import downloadIcon from './assets/download1.svg'
 import settingsIcon from './assets/settings.svg';
 import drawIcon from './assets/tools.svg';
 
-const percentage = 66;
+const number = 66;
+
+const milestones = [100, 1000, 10000, 100000, 1000000];
 
 class Counter extends React.Component {
 
@@ -39,10 +41,11 @@ class Counter extends React.Component {
       <div className="container">
         <div className="counter" style={{height:200 , width:200, marginBottom: 20}}>
           <SegmentedProgressbar
-            percentage={percentage}
+            percentage={(number/(milestones.find(m => m > number))) * 100}
+            text={number}
           />
         </div>
-        <p className="submit-text">Pana acum, {percentage} de romani au desenat Romania asa cum si-au dorit!</p>
+        <p className="submit-text">Pana acum, {number} de romani au desenat Romania asa cum si-au dorit!</p>
         {
           window.drawingUrl ?
             <a href={window.drawingUrl} download="My-Romania.jpeg" className="image-button">

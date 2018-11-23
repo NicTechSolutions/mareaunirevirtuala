@@ -24,10 +24,16 @@ export default class IntroPage extends React.Component {
         return (
 
             <React.Fragment>
-                <div className="content-container" ref={this.toRef}>
-                    <div className="participateButton">
-                        <Button handleClick={this.participate} buttonText="Vreau sa particip!" />
+                <div className="container" ref={this.toRef}>
+                    <div class="logo"></div>
+                    <div class="logo-intro">
+                        <div class="inline"><div className="checked"></div><div class="text">Inscrie-te</div> </div>
+                        <div className="rect"></div>
+                        <div class="inline"><div className="pencil"></div> <div class="text">Creioneaza-ti gandul</div> </div>
+                        <div className="rect"></div>
+                        <div class="inline"><div className="romania"></div> <div class="text">Fii parte din cel mai mare mozaic virtual</div></div>
                     </div>
+                    <Button handleClick={this.participate} buttonText="TRIMITE UN GÂND BUN" />
                 </div>
             </React.Fragment>
         )

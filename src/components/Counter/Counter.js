@@ -8,6 +8,7 @@ import './Counter.css';
 import downloadIcon from './assets/download1.svg'
 import settingsIcon from './assets/settings.svg';
 import drawIcon from './assets/tools.svg';
+import Button from '../Button';
 
 const number = 66;
 
@@ -36,32 +37,28 @@ class Counter extends React.Component {
     this.props.history.push('/painter');
   }
 
+  downloadImage() {
+
+  }
+
   render() {
-    return(
+    return (
       <div className="container">
-        <div className="counter" style={{height:200 , width:200, marginBottom: 20}}>
+        <div className="settingsButton" onClick={this.toggleModal}></div>
+        <div className="counter" style={{ height: 200, width: 200, marginBottom: 20 }}>
           <SegmentedProgressbar
-            percentage={(number/(milestones.find(m => m > number))) * 100}
+            percentage={(number / (milestones.find(m => m > number))) * 100}
             text={number}
           />
         </div>
         <p className="submit-text">Pana acum, {number} de romani au desenat Romania asa cum si-au dorit!</p>
         {
           window.drawingUrl ?
-            <a href={window.drawingUrl} download="My-Romania.jpeg" className="image-button">
-              <img src={downloadIcon} alt="descarca" className="image"/>
-              <div>DESCARCĂ</div>
-            </a> :
-            <div onClick={this.navigateToPainter} className="image-button">
-              <img src={drawIcon} alt="deseneaza" className="image"/>
-              <div>DESENEAZA</div>
-            </div>
+            <Button handleClick={this.downloadImage} buttonText="Descarca"></Button>
+            :
+            <Button handleClick={this.navigateToPainter} buttonText="Incepe"></Button>
         }
-        <div onClick={this.toggleModal} className="image-button">
-          <img src={settingsIcon} alt="setari" className="image"/>
-          <div>SETARI</div>
-        </div>
-        <SettingsModal open={this.state.modalOpen} closeModal={this.toggleModal}/>
+        <SettingsModal open={this.state.modalOpen} closeModal={this.toggleModal} />
       </div>
     );
   }

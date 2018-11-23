@@ -1,13 +1,17 @@
 @import '~sanitize.css';
+@value tabletMaxWidth from './styles/media.css';
+
 
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  font-family:  -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('/background.jpg');
+  background-size:cover;
 }
 
 code {
@@ -35,11 +39,38 @@ h6 {
 
 .input {
   height: 36px;
+  width: 100%;
   font-size: 16px;
-  text-align: center;
-  margin-bottom: 4px;
+  font-family: Lato;
+  padding-left: 15px;
+  text-align: left;
+  margin: 5px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.17);
+  background-color: #ffffff;
 }
 
 .input:focus {
   outline: none;
+}
+
+.logo {
+  background-image: url("/logo.svg");
+  height: 250px;
+  width: 200px;
+  margin: 10px;
+  margin-bottom: 30px;
+  background-size: cover;
+}
+
+@media only screen and (max-width: tabletMaxWidth) {
+  .input {
+    border: solid 1px #4D82B0;
+  }
+
+  .logo {
+    height: 150px;
+    width: 100px;
+  }
+  
 }

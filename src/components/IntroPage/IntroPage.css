@@ -1,47 +1,80 @@
 @value tabletMaxWidth from '../../styles/media.css';
 
-.content-container {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    padding: 5px;
-    background-image: url('/intro-desktop.gif');
-    background-size: cover;
-    background-position: center;
+.container {
+    width: 30%;
 }
 
-.logoDesktop {
-    background-image: url('/logo.png');
+.submit-button {
+    width: 90%;
+    position:  absolute;
+    margin-bottom: 20px;
+    bottom: 0;
+}
+
+.logo-intro {
+    margin: 20px;
+}
+.checked {
+    width: 33px;
+    height: 33px;
+    display: inline-block;
+    background-image: url("/checked.svg");
+    background-position: center;
+    background-size: contain;
+
+}
+.rect {
+    width: 33px;
+    height: 50px;
+    margin-top: -8px;
+    background-image: url("/rectangle.svg");
     background-size: contain;
     background-position: center;
-    height: 100%;
-    width: 100%;
+
+}
+.pencil {
+    width: 33px;
+    height: 33px;
+    margin-top: -8px;
+    background-image: url("/pencil.svg");
+    background-position: center;
+    display: inline-block;
+    background-size: contain;
+
+}
+.romania {
+    width: 33px;
+    height: 33px;
+    margin-top: -10px;
+    background-image: url("/romania.svg");
+    background-position: center;
+    background-size: contain;
+    display: inline-block;
+
 }
 
-.participateButton {
-    align-self: flex-end;
-    width: 50%;
+.inline {
+    display:inherit;
+    display: flex;
 }
 
-@media only screen and (max-width: tabletMaxWidth) {
-    .content-container {
-        background-image: url('/intro-mobile.gif');
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
-
-    .participateButton {
-        position: absolute;
-        width: 100%;
-        bottom: 0;
-    }
-
-    .logoDesktop {
-        display: none;
-        visibility: hidden;
-    }
-
+.text {
+    display:inline-block;
+    flex: 1;
+    margin-left: 10px;
+    color: white;
+    text-align: left;
+    font-family: Lato;
+    font-size: 15px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
     
+}
+@media only screen and (max-width: tabletMaxWidth) {
+    .container {
+        width: 100%;
+    }
 }

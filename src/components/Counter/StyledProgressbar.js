@@ -21,7 +21,7 @@ function StyledProgressbar(props) {
         // Customize the path, i.e. the part that's "complete"
         path: {
           // Tweak path color:
-          stroke: '#4D82B0',
+          stroke: '#ffffff',
           // Tweak path to use flat or rounded ends:
           strokeLinecap: 'butt',
           // Tweak transition animation:
@@ -33,12 +33,12 @@ function StyledProgressbar(props) {
         // Customize the circle behind the path
         trail: {
           // Tweak the trail color:
-          stroke: '#d6d6d6',
+          stroke: 'rgba(255,255,255, 0.5)',
         },
         // Customize the text
         text: {
           // Tweak text color:
-          fill: '#d6d6d6',
+          fill: '#ffffff',
           // Tweak text size:
           fontSize: '11px',
         },

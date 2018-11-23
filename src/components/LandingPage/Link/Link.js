@@ -16,8 +16,8 @@ export default class Link extends React.Component {
   };
 
   render() {
-    return(
-      <span className={"link " + this.props.direction} onClick={this.props.handleClick}>{this.props.text}</span>
+    return (
+      <span className={"link " + this.props.direction} onClick={this.props.handleClick}><p>{this.props.text}</p></span>
     )
   }
 }

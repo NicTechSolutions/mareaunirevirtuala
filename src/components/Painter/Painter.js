@@ -1,10 +1,11 @@
 import React from 'react';
 import CanvasDraw from 'react-canvas-draw';
-import {disableBodyScroll} from 'body-scroll-lock';
+import { disableBodyScroll } from 'body-scroll-lock';
 import Cookies from 'universal-cookie';
 import classNames from 'classnames';
+import { Slider } from 'material-ui-slider';
 
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Constants from '../../constants/Constants';
 
 import Button from '../Button';
@@ -26,8 +27,9 @@ class Painter extends React.Component {
     this.undo = this.undo.bind(this);
 
     this.state = {
-      activeColor : COLORS[0],
-      activeBrushSize : 10,
+      activeColor: COLORS[0],
+      activeBrushSize: 10,
+      size: 10
     };
   }
 
@@ -79,43 +81,44 @@ class Painter extends React.Component {
     }
   }
 
+  onChange = (value) => {
+    if (value) {
+      console.log(value);
+      this.setState({
+        activeBrushSize: value
+      });
+    }
+
+  }
+
   render() {
     return (
       <React.Fragment>
-        <div className="toolbar">
-          <div className="size">
-            DIMENSIUNE:
-            <div className="size-button"
-                 onClick={() => {
-                   if (this.state.activeBrushSize - 1 > 0) {
-                     this.setState({activeBrushSize : this.state.activeBrushSize - 1});
-                   }
-                 }}>-</div>
-            {this.state.activeBrushSize}
-            <div className="size-button"
-                 onClick={() => this.setState({activeBrushSize : this.state.activeBrushSize + 1})}>+
-            </div>
-          </div>
-          <div className="colors">
-            {COLORS.map(color => (
-              <div key={color} className={classNames('swatch', {active : color === this.state.activeColor})}
-                   style={{backgroundColor : color}}
-                   onClick={() => this.setState({activeColor : color})}/>
-            ))}
-          </div>
+        <div className="slider-container">
+          <Slider
+            defaultValue={this.state.activeBrushSize}
+            onChange={this.onChange}>
+          </Slider>
+        </div>
+        <div className="colors">
+          {COLORS.map(color => (
+            <div key={color} className={classNames('swatch', { active: color === this.state.activeColor })}
+              style={{ backgroundColor: color }}
+              onClick={() => this.setState({ activeColor: color })} />
+          ))}
         </div>
         <CanvasDraw
           ref={this.toRef}
-          style={{position : 'static'}}
+          style={{ position: 'static' }}
           brushSize={this.state.activeBrushSize}
           brushColor={this.state.activeColor}
           canvasWidth={window.innerWidth}
           canvasHeight={window.innerHeight}
         />
         <div className="button-bar">
-          <Button handleClick={this.clearCanvas} buttonText="ȘTERGE"/>
-          <Button handleClick={this.undo} buttonText="ANULEAZĂ"/>
-          <Button handleClick={this.saveDrawing} buttonText="TRIMITE"/>
+          <Button handleClick={this.clearCanvas} buttonText="ȘTERGE" />
+          <Button handleClick={this.undo} buttonText="ANULEAZĂ" />
+          <Button handleClick={this.saveDrawing} buttonText="TRIMITE" />
         </div>
       </React.Fragment>
     );

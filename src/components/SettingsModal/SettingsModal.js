@@ -48,47 +48,47 @@ export default class SettingsModal extends React.Component {
       .then(
         response => {
           const opts = response.data.compliance;
-          if (Object.keys(opts).length === 0 && opts.constructor === Object) {
-            this.setState({
-              opts: [{
-                message: "Doresc sa primesc emailuri generale",
-                value: false,
-                id: "all"
-              }, {
-                message: "Doresc emailuri pentru viitoare evenimente",
-                value: true,
-                id: "next"
+          this.setState({
+            opts: [
+              {
+                id: "all",
+                message: "Emailuri generale",
+                value: opts.all
               },
               {
-                message: "Doresc emailuri pentru marketing",
-                value: false,
-                id: "marketing"
+                id: "marketing",
+                message: "Emailuri pentru marketing",
+                value: opts.marketing
+              }, {
+                id: "next",
+                message: "Ce urmeaza sa facem",
+                value: opts.next
               }
-              ]
-            })
+            ]
+          });
 
-          }
         }, err => {
 
         })
   }
 
   updateOpts(opts) {
-    // console.log(Object.values(opts));
-    const params = Object.values(opts).reduce(function (result, currentObject) {
+    const mapped = opts.map(opt => {
+      return {
+        [opt.id]: opt.value
+      }
+    });
+
+    const params = mapped.reduce(function (result, currentObject) {
       for (var key in currentObject) {
         if (currentObject.hasOwnProperty(key)) {
           result[key] = currentObject[key];
         }
       }
       return result;
-    }, {});
+    }, {})
 
-    console.log(params);
-
-    axios.put(`${Constants.API_URL}/users/emails`, {
-      params
-    })
+    axios.put(`${Constants.API_URL}/users/emails`, params);
   }
 
   deleteAccount = () => {
@@ -117,17 +117,18 @@ export default class SettingsModal extends React.Component {
             <OptIns opts={this.state.opts} onUpdate={this.updateOpts}></OptIns>
 
             {!showPrompt &&
-              <div className="delete button-container">
-                <button className="btn btn-danger" onClick={this.toggleConfirmPrompt}>STERGE ACEST CONT</button>
+              <div className="button-container">
+                <button className="btn btn-danger delete-account-button" onClick={this.toggleConfirmPrompt}>STERGE ACEST CONT</button>
               </div>
             }
             {showPrompt &&
               <div className="delete">
-                <div>Esti pe cale sa stergi acest cont.
+                <div className="check-container">Esti pe cale sa stergi acest cont.
                   Esti sigur de aceasta decizie?
               </div>
                 <div className="button-container">
-                  <button className="btn btn-danger" onClick={this.deleteAccount}>DA</button>
+                  <button className="btn btn-info delete-account-button" onClick={() => { this.setState({ showPrompt: false }) }}>Nu</button>
+                  <button className="btn btn-danger cancel-delete" onClick={this.deleteAccount}>Da, sunt sigur</button>
                 </div>
               </div>}
           </div>

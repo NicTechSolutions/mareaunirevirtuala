@@ -2,17 +2,23 @@
 
 .checkbox-container {
     padding: 4px;
+    margin-left: 10px;
     display: flex;
     width: 100%;
     align-items: flex-end;
-    justify-content: space-around;
+    justify-content: space-between;
     border-bottom: 0.2px limeGreen solid; 
     border-top: 0.2px limeGreen solid; 
 }
 .checkbox {
-    float: right;
     margin-left: 10px;
     margin-bottom: 5px;
+}
+
+.message {
+    height: 100%;
+    width: 100%;
+    align-self: center;
 }
 
 

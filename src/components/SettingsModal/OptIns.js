@@ -7,25 +7,28 @@ export default class OptIns extends React.Component {
     constructor(props) {
         super(props);
         const refs = [];
-        this.state = { ...props.opts, refs };
+        this.state = {
+            opts: props.opts, refs
+        };
     }
 
     componentDidMount() {
         this.state.refs.map((ref, i) => {
             if (ref.value) {
-                ref.item.click()
+                ref.item.checked = ref.value
             }
         })
     }
     updateOpt(i) {
+        const opts = this.state.opts;
+        opts[i].value = opts[i].value === 0 ? 1 : 0;
         this.setState({
-            [i]: {
-                message: this.state[i].message,
-                value: !this.state[i].value
-            }
+            opts: opts
         });
-        this.props.onUpdate(this.state);
+
+        this.props.onUpdate(this.state.opts);
     }
+
     render() {
 
         return (
@@ -34,15 +37,15 @@ export default class OptIns extends React.Component {
                     const ref = React.createRef();
                     return (
                         <div className="checkbox-container" key={i}>
-                            <div>{opt.message}</div>
+                            <div className="message">{opt.message}</div>
                             <div className="checkbox">
                                 <label value={opt.value} onChange={evt => this.updateOpt(i)} className="switch">
-                                    <input type="checkbox" />
-                                    <span className="slider" ref={input => {
+                                    <input type="checkbox" ref={input => {
                                         if (input) {
                                             this.state.refs.push({ item: input, value: opt.value });
                                         }
-                                    }}></span>
+                                    }} />
+                                    <span className="slider" ></span>
                                 </label>
                             </div>
                         </div>

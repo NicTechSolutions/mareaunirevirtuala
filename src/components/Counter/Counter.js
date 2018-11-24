@@ -28,6 +28,9 @@ class Counter extends React.Component {
       modalOpen: false,
       number: 0
     }
+  }
+
+  componentDidMount() {
     axios.get(`${Constants.API_URL}/users/counter`)
     .then((response) => {
       this.setState({ number:response.data} );

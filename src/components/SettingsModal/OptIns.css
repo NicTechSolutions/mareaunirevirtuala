@@ -9,6 +9,13 @@
     justify-content: space-between;
     border-bottom: 0.2px limeGreen solid; 
     border-top: 0.2px limeGreen solid; 
+    font-family: Lato;
+    font-size: 18px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
 }
 .checkbox {
     margin-left: 10px;

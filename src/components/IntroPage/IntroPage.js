@@ -7,14 +7,8 @@ import Button from '../Button';
 export default class IntroPage extends React.Component {
     constructor(props) {
         super(props);
-
-        this.toRef = this.toRef.bind(this);
-        disableBodyScroll(this.toRef);
     }
 
-    toRef(el) {
-        this.bgroundRef = el;
-    }
 
     participate = () => {
         this.props.history.push("/landing");
@@ -24,7 +18,7 @@ export default class IntroPage extends React.Component {
         return (
 
             <React.Fragment>
-                <div className="container" ref={this.toRef}>
+                <div className="container">
                     <div class="logo"></div>
                     <div class="logo-intro">
                         <div class="inline"><div className="checked"></div><div class="text">Inscrie-te</div> </div>

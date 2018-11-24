@@ -73,6 +73,7 @@ export default class SettingsModal extends React.Component {
   }
 
   updateOpts(opts) {
+    console.log(opts);
     const mapped = opts.map(opt => {
       return {
         [opt.id]: opt.value

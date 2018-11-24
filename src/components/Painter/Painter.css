@@ -1,38 +1,130 @@
+@value main-red from '../../styles/colors.css';
+
+.draw-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    height: 75px;
+    justify-content: space-between;
+}
+
+.dropdown-header {
+    position: relative;
+    display: flex;
+    margin-top: 12px;
+    justify-content: flex-end;
+}
+
+.pencil-drop-icon {
+    height: 35px;
+    width: 35px;
+    background-image: url("/pencil-size.svg");
+    background-size: contain;
+}
+
+.dropdown {
+    width: 250px;
+    height: 150px;
+    display:flex;
+    flex-direction: column;
+}
+
+.dropdown-content {
+    height: 100px;
+    width: 100%;
+    background-image: url("/group.svg");
+    background-size: contain;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.colors {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.slider-container {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider {
+    box-shadow: none!important;  
+    margin: 0!important;
+}
+
+.Slider-pointer-4 {
+    background-color: main-red!important;
+}
+
+.Slider-track-3 {
+    background-color: main-red!important;
+}
+.slider::before {
+    width: 100%;
+    height: 10%;
+    display: none;
+}
+
 .button-bar {
     display: flex;
-    width: 100vw;
+    width: 100%;
+    height: 80px;
+    box-shadow: 0px 0px 0px 2px rgba(0, 0, 0, 0.17);
     position: absolute;
+    justify-content: center;
+    align-items: center;
     bottom: 0;
 }
 
-.toolbar {
+.draw-button {
+    height: 100%;
     width: 100%;
-    height: 50px;
-    padding: 30px 0;
-    position: fixed;
-    top: 0;
-    background-color: #2f2f2f;
-    color: white;
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.size {
-    display: flex;
-    align-items: center;
-}
-
-.size-button {
-    width: 24px;
-    height: 24px;
-    background-color: #4f4f4f;
-    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    background-size: contain;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
-    padding: 4px;
-    margin: 0 4px;
+    font-family: Lato;
+}
+
+.reset-button {
+    height: 25px;
+    width: 25px;
+    background-image: url("/reset.svg");
+}
+
+.delete-button {
+    height: 25px;
+    width: 25px;
+    background-image: url("/delete.svg");
+}
+
+.send-button {
+    height: 25px;
+    width: 25px;
+    background-image: url('/send-button.svg');
+}
+.drawing-canvas-container {
+    width: 100%;
+    box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.17);
+}
+
+.separator {
+    height: 50%;
+    width: 2px;
 }
 
 .swatch{
@@ -40,10 +132,10 @@
     height: 30px;
     border-radius: 15px;
     box-shadow: inset 0px 1px 0px rgba(255,255,255,0.5), 0px 2px 2px rgba(0,0,0,0.5);
-    display: inline-block;
     margin-left: 10px;
     margin-right: 10px;
     background-color: cyan;
+    
 }
 
 .active{

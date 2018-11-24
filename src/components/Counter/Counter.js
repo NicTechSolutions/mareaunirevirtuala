@@ -31,7 +31,7 @@ class Counter extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`${Constants.API_URL}/users/counter`)
+    axios.get(`${Constants.API_URL}/users/drawings/counter`)
     .then((response) => {
       this.setState({ number:response.data} );
     }).catch((err) => {

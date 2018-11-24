@@ -12,7 +12,7 @@ import Button from '../Button';
 
 import './Painter.css';
 
-const COLORS = ['red', 'yellow', 'blue'];
+const COLORS = ['#CE1126', '#FCD116', '#002B7F'];
 
 class Painter extends React.Component {
 
@@ -112,21 +112,12 @@ class Painter extends React.Component {
       <React.Fragment>
         <div className="draw-container " >
           <div className="header">
-            <div className="dropdown">
-              <div className="dropdown-header" onClick={this.onToggleColors}>
-                <div className={classNames('swatch', { active: true })}
-                  style={{ backgroundColor: this.state.activeColor }}/>
-
-              </div>
-              <div className="dropdown-content" hidden={!this.state.toggleColors}>
-                <div className="colors">
-                  {COLORS.map(color => (
-                    <div key={color} className={classNames('swatch', { active: color === this.state.activeColor })}
-                      style={{ backgroundColor: color }}
-                      onClick={() => this.setState({ activeColor: color })} />
-                  ))}
-                </div>
-              </div>
+            <div className="colors">
+              {COLORS.map(color => (
+                <div key={color} className={classNames('swatch', { active: color === this.state.activeColor })}
+                  style={{ backgroundColor: color }}
+                  onClick={() => this.setState({ activeColor: color })} />
+              ))}
             </div>
             <div className="dropdown">
               <div className="dropdown-header">
@@ -142,7 +133,7 @@ class Painter extends React.Component {
               </div>
             </div>
           </div>
-          <div className="drawing-canvas-container " onTouchStart={() => this.setState({toggleColors: false, toggleSizer:false})}>
+          <div className="drawing-canvas-container " onTouchStart={() => this.setState({ toggleColors: false, toggleSizer: false })}>
             <CanvasDraw
               ref={this.toRef}
               style={{ position: 'static' }}
@@ -152,10 +143,23 @@ class Painter extends React.Component {
               brushColor={this.state.activeColor}
             />
           </div>
-          <div className="button-bar">
-            <Button handleClick={this.clearCanvas} buttonText="ȘTERGE" />
-            <Button handleClick={this.undo} buttonText="ANULEAZĂ" />
-            <Button handleClick={this.saveDrawing} buttonText="TRIMITE" />
+          <div className="button-bar" onClick={this.undo}>
+            <div className="draw-button ">
+              <div className="reset-button"></div>
+              Anuleaza
+            </div>
+            <div className="separator"></div>
+
+            <div className="draw-button" onClick={this.clearCanvas}>
+              <div className="delete-button"></div>
+              <div>Sterge</div>
+            </div>
+            <div className="separator"></div>
+
+            <div className="draw-button" onClick={this.saveDrawing}>
+              <div className="send-button"></div>
+              Trimite
+            </div>
           </div>
         </div>
       </React.Fragment >

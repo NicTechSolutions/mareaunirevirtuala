@@ -10,7 +10,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('/background.jpg');
+  background-image: linear-gradient(to bottom, #0066cc 0%, #66ccff 100%);
   background-size:cover;
 }
 

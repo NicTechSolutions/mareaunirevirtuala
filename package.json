@@ -24,6 +24,7 @@
     "react-responsive-modal": "^3.5.1",
     "react-router-dom": "^4.3.1",
     "sanitize.css": "^8.0.0",
+    "serve": "^10.1.1",
     "three.js": "^0.77.1",
     "universal-cookie": "^3.0.4"
   },

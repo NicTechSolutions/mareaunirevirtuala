@@ -112,7 +112,7 @@ export default class SettingsModal extends React.Component {
         <Modal open={this.props.open} onClose={this.props.closeModal}>
           <div className="settings-container">
             <div className="title">
-              <h2>Setarile mele</h2>
+              <h3>Setarile mele</h3>
             </div>
 
             <OptIns opts={this.state.opts} onUpdate={this.updateOpts}></OptIns>

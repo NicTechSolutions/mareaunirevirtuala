@@ -1,4 +1,5 @@
 import React from 'react';
+import Switch from '@material-ui/core/Switch';
 
 import "./OptIns.css";
 
@@ -19,13 +20,14 @@ export default class OptIns extends React.Component {
             }
         })
     }
-    updateOpt(i) {
-        const opts = this.state.opts;
-        opts[i].value = opts[i].value === 0 ? 1 : 0;
+    updateOpt(input) {
+        const id = input.target.id
+
+        let opts = this.state.opts;
+        opts[id].value = !opts[id].value ? 1 : 0;
         this.setState({
             opts: opts
-        });
-
+        })
         this.props.onUpdate(this.state.opts);
     }
 
@@ -34,20 +36,17 @@ export default class OptIns extends React.Component {
         return (
             <React.Fragment>
                 {this.props.opts.map((opt, i) => {
-                    const ref = React.createRef();
                     return (
-                        <div className="checkbox-container" key={i}>
-                            <div className="message">{opt.message}</div>
-                            <div className="checkbox">
-                                <label value={opt.value} onChange={evt => this.updateOpt(i)} className="switch">
-                                    <input type="checkbox" ref={input => {
-                                        if (input) {
-                                            this.state.refs.push({ item: input, value: opt.value });
-                                        }
-                                    }} />
-                                    <span className="slider" ></span>
-                                </label>
+                        <div className="opt">
+                            <div className="checkbox-container" key={i}>
+                                <div className="message">{opt.message}</div>
+                                <Switch
+                                    id={`${i}`}
+                                    checked={opt.value === 1 ? true : false}
+                                    onChange={(evt, checked) => this.updateOpt(evt, checked)}
+                                    color="primary"></Switch>
                             </div>
+                            <div className="separator"></div>
                         </div>
                     )
                 })

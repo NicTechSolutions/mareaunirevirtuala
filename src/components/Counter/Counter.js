@@ -31,6 +31,11 @@ class Counter extends React.Component {
   }
 
   componentDidMount() {
+    console.log("start");
+    this.getCounter();
+  }
+
+  getCounter() {
     axios.get(`${Constants.API_URL}/users/drawings/counter`)
     .then((response) => {
       this.setState({ number:response.data} );
@@ -38,7 +43,6 @@ class Counter extends React.Component {
       console.log(err);
     });
   }
-
   toggleModal() {
     this.setState({
       modalOpen: !this.state.modalOpen,

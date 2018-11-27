@@ -7,8 +7,6 @@
     width: 100%;
     align-items: flex-end;
     justify-content: space-between;
-    border-bottom: 0.2px limeGreen solid; 
-    border-top: 0.2px limeGreen solid; 
     font-family: Lato;
     font-size: 18px;
     font-weight: 500;
@@ -26,6 +24,19 @@
     height: 100%;
     width: 100%;
     align-self: center;
+}
+
+.separator {
+    width: 80%;
+    height: 1px;
+    background: gray;
+}
+
+.opt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 

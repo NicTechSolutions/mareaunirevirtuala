@@ -38,6 +38,7 @@ class Painter extends React.Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     window.addEventListener("resize", this.updateDimensions.bind(this));
 
     this.updateDimensions();

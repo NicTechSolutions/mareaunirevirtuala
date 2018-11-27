@@ -2,7 +2,7 @@ import React from 'react';
 import CanvasDraw from 'react-canvas-draw';
 import { disableBodyScroll } from 'body-scroll-lock';
 import Cookies from 'universal-cookie';
-import { Slider } from 'material-ui-slider';
+import Slider from '@material-ui/lab/Slider';
 import classNames from 'classnames';
 
 import { withRouter } from 'react-router-dom';
@@ -43,7 +43,7 @@ class Painter extends React.Component {
   componentDidMount() {
     window.addEventListener("resize", this.updateDimensions.bind(this));
 
-    this.updateDimensions();  
+    this.updateDimensions();
 
 
     if (this.canvas) {
@@ -105,7 +105,7 @@ class Painter extends React.Component {
     }
   }
 
-  onChange = (value) => {
+  onChange = (evt, value) => {
     if (value) {
       console.log(value);
       this.setState({
@@ -140,19 +140,22 @@ class Painter extends React.Component {
                   onClick={() => this.setState({ activeColor: color })} />
               ))}
             </div>
-            <div className="dropdown">
-              <div className="dropdown-header">
-                <div className="pencil-drop-icon" onClick={this.onToggleSizer}></div>
-              </div>
-              <div className="dropdown-content" hidden={!this.state.toggleSizer}>
-                <div className="slider-container" >
-                  <Slider
-                    defaultValue={this.state.activeBrushSize}
-                    onChange={this.onChange}>
-                  </Slider>
+            <div className="popover">
+              <div className="pencil-drop-icon" onClick={this.onToggleSizer}></div>
+              {
+                this.state.toggleSizer &&
+                <div className="popover-content">
+                  <div className="slider-container">
+                    <Slider
+                      value={this.state.activeBrushSize}
+                      onChange={this.onChange}>
+                    </Slider>
+                  </div>
                 </div>
-              </div>
+
+              }
             </div>
+
           </div>
           <div className="drawing-canvas-container"
             ref={(divElement) => this.canvasContainer = divElement}

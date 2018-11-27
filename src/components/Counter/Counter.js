@@ -17,29 +17,41 @@ import './Counter.css';
 
 import Button from '../Button';
 import Constants from '../../constants/Constants';
+import Cookies from 'universal-cookie';
 
 // const number = 66;
 
 const milestones = [100, 1000, 10000, 100000, 1000000];
 
 class Counter extends React.Component {
-
+  cookies = new Cookies();
   constructor(props) {
     super(props);
     this.url = "www.mareaunirevirtuala.ro";
     this.title = "Hai alaturi de mine si fi parte din unire. #mareaunirevirtuala #romania";
     this.toggleModal = this.toggleModal.bind(this);
     this.navigateToPainter = this.navigateToPainter.bind(this);
+    this.onUserPainted = this.onUserPainted.bind(this);
+    const hasPainting = this.cookies.get("user.has_painting") === "true" ? true : false;
+    window.addEventListener('paint_done', this.onUserPainted, false);
+    console.log(hasPainting);
 
     this.state = {
       modalOpen: false,
-      number: 0
+      number: 0,
+      hasPainting: hasPainting
     }
   }
 
   componentDidMount() {
-    console.log("start");
     this.getCounter();
+  }
+
+  onUserPainted(ev) {
+    this.cookies.set("user.has_painting", true);
+    this.setState({
+      hasPainting: true
+    });
   }
 
   getCounter() {
@@ -50,6 +62,8 @@ class Counter extends React.Component {
         console.log(err);
       });
   }
+
+
   toggleModal() {
     this.setState({
       modalOpen: !this.state.modalOpen,
@@ -58,10 +72,6 @@ class Counter extends React.Component {
 
   navigateToPainter() {
     this.props.history.push('/painter');
-  }
-
-  downloadImage() {
-
   }
 
   render() {
@@ -74,8 +84,15 @@ class Counter extends React.Component {
             text={this.state.number}
           />
         </div>
-        <p className="submit-text">Pana acum, {this.state.number} de romani au desenat Romania asa cum si-au dorit!</p>
-        <Button handleClick={this.navigateToPainter} buttonText="Incepe"></Button>
+        <p className="submit-text">Pana acum, {this.state.number} de romani au #desenat Romania asa cum si-au dorit!</p>
+
+        {!this.state.hasPainting && <Button handleClick={this.navigateToPainter} buttonText="Incepe"></Button>}
+        {this.state.hasPainting &&
+          <div className="final-message">
+            In scurt timp iti vei putea vedea desenul intr-un mod unic! Iti multumim pentru contributie, 
+            spune-le si prietenilor tai ca participi la cel mai mare mozaic virtual!
+          </div>
+        }
         <div className="social-media-container">
           <FacebookShareButton
             url={this.url}

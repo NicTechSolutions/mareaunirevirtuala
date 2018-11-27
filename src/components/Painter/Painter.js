@@ -9,6 +9,8 @@ import { withRouter } from 'react-router-dom';
 import Constants from '../../constants/Constants';
 
 import './Painter.css';
+import axios from 'axios';
+import { NotificationManager } from 'react-notifications';
 
 const COLORS = ['#CE1126', '#FCD116', '#002B7F'];
 
@@ -84,22 +86,15 @@ class Painter extends React.Component {
 
   saveDrawing() {
     if (this.canvas) {
-      window.drawingUrl = this.canvas.canvas.toDataURL('image/jpeg');
       var data = this.canvas.canvas.toDataURL('image/jpeg');
-      var token = this.cookies.get('token');
-      var request = new XMLHttpRequest();
-
-      request.onreadystatechange = function () {
-        if (request.readyState === 4 && request.status === 200) {
-          //do our stuff
-          // var response = request.responseText;
-        }
-      };
-
-      request.open('POST', `${Constants.API_URL}/drawings/upload`, true);
-      request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-      request.setRequestHeader('Authorization', 'Bearer ' + token);
-      request.send('drawing=' + data);
+      axios.post(`${Constants.API_URL}/drawings/upload`, {
+        drawing: data
+      }).then(response => {
+        NotificationManager.success("Imaginea s-a incarcat cu succes!");
+        window.dispatchEvent(new Event("paint_done"));
+      }, err => {
+        NotificationManager.error("Eroare la incarcarea imaginii!");
+      });
       this.props.history.push('/counter');
     }
   }

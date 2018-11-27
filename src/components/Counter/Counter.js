@@ -86,7 +86,7 @@ class Counter extends React.Component {
         </div>
         <p className="submit-text">Pana acum, {this.state.number} de romani au #desenat Romania asa cum si-au dorit!</p>
 
-        {!this.state.hasPainting && <Button handleClick={this.navigateToPainter} buttonText="Incepe"></Button>}
+        {!this.state.hasPainting && <Button handleClick={this.navigateToPainter} buttonText="Vreau sa desenez"></Button>}
         {this.state.hasPainting &&
           <div className="final-message">
             In scurt timp iti vei putea vedea desenul intr-un mod unic! Iti multumim pentru contributie, 

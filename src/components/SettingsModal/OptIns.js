@@ -46,7 +46,7 @@ export default class OptIns extends React.Component {
                                     onChange={(evt, checked) => this.updateOpt(evt, checked)}
                                     color="primary"></Switch>
                             </div>
-                            <div className="separator"></div>
+                            <div className="separator_h"></div>
                         </div>
                     )
                 })

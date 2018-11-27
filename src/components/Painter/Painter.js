@@ -24,15 +24,12 @@ class Painter extends React.Component {
     this.clearCanvas = this.clearCanvas.bind(this);
     this.saveDrawing = this.saveDrawing.bind(this);
     this.undo = this.undo.bind(this);
-    this.canvasHeight = null;
-    this.canvasWidth = null;
 
     this.state = {
       activeColor: COLORS[0],
       activeBrushSize: 10,
       size: 10,
       toggleSizer: false,
-      toggleColors: false,
     };
   }
 
@@ -106,7 +103,7 @@ class Painter extends React.Component {
 
   onChange = (evt, value) => {
     if (value) {
-        this.setState({
+      this.setState({
         activeBrushSize: value
       });
     }
@@ -124,6 +121,10 @@ class Painter extends React.Component {
     this.setState({
       toggleColors: !this.state.toggleColors
     })
+  }
+
+  onDrawing = () => {
+    this.setState({toggleSizer: false });
   }
 
   render() {
@@ -148,7 +149,7 @@ class Painter extends React.Component {
                       value={this.state.activeBrushSize}
                       onChange={this.onChange}
                       color={`${this.state.activeColor}`}
-                      >
+                    >
                     </Slider>
                   </div>
                 </div>
@@ -159,7 +160,10 @@ class Painter extends React.Component {
           </div>
           <div className="drawing-canvas-container"
             ref={(divElement) => this.canvasContainer = divElement}
-            onTouchStart={() => this.setState({ toggleColors: false, toggleSizer: false })}>
+            onTouchStart={this.onDrawing}
+            onClick={this.onDrawing}
+            onDragStart={this.onDrawing}
+            >
             <CanvasDraw
               ref={this.toRef}
               style={{ position: 'static' }}

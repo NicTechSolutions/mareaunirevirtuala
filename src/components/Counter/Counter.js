@@ -32,6 +32,7 @@ class Counter extends React.Component {
     this.toggleModal = this.toggleModal.bind(this);
     this.navigateToPainter = this.navigateToPainter.bind(this);
     this.onUserPainted = this.onUserPainted.bind(this);
+    this.logout = this.logout.bind(this);
     const hasPainting = this.cookies.get("user.has_painting") === "true" ? true : false;
     window.addEventListener('paint_done', this.onUserPainted, false);
     console.log(hasPainting);
@@ -70,6 +71,13 @@ class Counter extends React.Component {
     })
   }
 
+  logout() {
+    this.cookies.remove('token');
+    this.cookies.remove('gdpr_compliance');
+    this.cookies.remove('user.has_painting');
+    this.props.history.push('/');
+  }
+
   navigateToPainter() {
     this.props.history.push('/painter');
   }
@@ -77,7 +85,8 @@ class Counter extends React.Component {
   render() {
     return (
       <div className="container">
-        <div className="settingsButton" onClick={this.toggleModal}></div>
+        <div className="settings-button" onClick={this.toggleModal}></div>
+        <div className="logout-button" onClick={this.logout}></div>
         <div className="counter" style={{ height: 200, width: 200, marginBottom: 20 }}>
           <SegmentedProgressbar
             percentage={(this.state.number / (milestones.find(m => m > this.state.number))) * 100}
@@ -89,7 +98,7 @@ class Counter extends React.Component {
         {!this.state.hasPainting && <Button handleClick={this.navigateToPainter} buttonText="Vreau sa desenez"></Button>}
         {this.state.hasPainting &&
           <div className="final-message">
-            In scurt timp iti vei putea vedea desenul intr-un mod unic! Iti multumim pentru contributie, 
+            In scurt timp iti vei putea vedea desenul intr-un mod unic! Iti multumim pentru contributie,
             spune-le si prietenilor tai ca participi la cel mai mare mozaic virtual!
           </div>
         }

@@ -7,7 +7,7 @@
     align-items: center;
 }
 
-.settingsButton {
+.settings-button {
     background-image: url("/settings.svg");
     height: 50px;
     width: 50px;
@@ -17,6 +17,19 @@
     margin: 10px;
     cursor: pointer;
     margin-right: 50px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.logout-button {
+    background-image: url("/logout.svg");
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top:0;
+    left:0;
+    margin: 10px;
+    cursor: pointer;
+    margin-left: 50px;
     background-size: cover;
     background-repeat: no-repeat;
 }

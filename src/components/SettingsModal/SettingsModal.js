@@ -132,6 +132,7 @@ export default class SettingsModal extends React.Component {
                   <button className="btn btn-danger cancel-delete" onClick={this.deleteAccount}>Da, sunt sigur</button>
                 </div>
               </div>}
+              
           </div>
         </Modal>
 

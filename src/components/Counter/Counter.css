@@ -34,6 +34,12 @@
     color: #ffffff;
 }
 
+.social-media-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @media only screen and (max-width: tabletMaxWidth) {
     .container {
         width: 100%;

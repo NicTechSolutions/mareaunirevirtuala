@@ -3,6 +3,15 @@ import axios from 'axios';
 import SettingsModal from '../SettingsModal';
 import 'react-circular-progressbar/dist/styles.css';
 import SegmentedProgressbar from './SegmentedProgressbar';
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  LinkedinShareButton,
+
+  TwitterIcon,
+  LinkedinIcon,
+  FacebookIcon
+} from 'react-share';
 import { withRouter } from 'react-router-dom';
 import './Counter.css';
 
@@ -17,7 +26,8 @@ class Counter extends React.Component {
 
   constructor(props) {
     super(props);
-
+    this.url = "www.mareaunirevirtuala.ro";
+    this.title = "Hai alaturi de mine si fi parte din unire. #mareaunirevirtuala #romania";
     this.toggleModal = this.toggleModal.bind(this);
     this.navigateToPainter = this.navigateToPainter.bind(this);
 
@@ -34,11 +44,11 @@ class Counter extends React.Component {
 
   getCounter() {
     axios.get(`${Constants.API_URL}/users/drawings/counter`)
-    .then((response) => {
-      this.setState({ number:response.data} );
-    }).catch((err) => {
-      console.log(err);
-    });
+      .then((response) => {
+        this.setState({ number: response.data });
+      }).catch((err) => {
+        console.log(err);
+      });
   }
   toggleModal() {
     this.setState({
@@ -65,12 +75,25 @@ class Counter extends React.Component {
           />
         </div>
         <p className="submit-text">Pana acum, {this.state.number} de romani au desenat Romania asa cum si-au dorit!</p>
-        {
-          window.drawingUrl ?
-            <Button handleClick={this.downloadImage} buttonText="Descarca"></Button>
-            :
-            <Button handleClick={this.navigateToPainter} buttonText="Incepe"></Button>
-        }
+        <Button handleClick={this.navigateToPainter} buttonText="Incepe"></Button>
+        <div className="social-media-container">
+          <FacebookShareButton
+            url={this.url}
+            hashtag={"#mareaunirevirtuala"}
+            quote={this.title}>
+            <FacebookIcon size={36} round></FacebookIcon>
+          </FacebookShareButton>
+          <TwitterShareButton
+            url={this.url}
+            title={this.title}>
+            <TwitterIcon size={36} round></TwitterIcon>
+          </TwitterShareButton>
+          <LinkedinShareButton
+            url={this.url}
+            title={this.title}>
+            <LinkedinIcon size={36} round></LinkedinIcon>
+          </LinkedinShareButton>
+        </div>
         <SettingsModal open={this.state.modalOpen} closeModal={this.toggleModal} />
       </div>
     );

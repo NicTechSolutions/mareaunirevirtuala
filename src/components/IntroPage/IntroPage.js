@@ -2,8 +2,18 @@ import React from 'react';
 
 import "./IntroPage.css";
 import Button from '../Button';
+import Cookies from 'universal-cookie';
 
 export default class IntroPage extends React.Component {
+    cookies = new Cookies();
+    constructor(props) {
+        super(props);
+        const token = this.cookies.get('token');
+        if (token) {
+            this.props.history.push('/counter');
+        }
+    }
+
     participate = () => {
         this.props.history.push("/landing");
     };

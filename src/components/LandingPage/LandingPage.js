@@ -20,6 +20,11 @@ class LandingPage extends React.Component {
   constructor(props) {
     super(props);
 
+    const token = this.cookies.get('token');
+    if(token) {
+      this.props.history.push('/counter');
+    }
+
     this.login = this.login.bind(this);
     this.switchTab = this.switchTab.bind(this);
     this.closeModal = this.closeModal.bind(this);

@@ -93,7 +93,6 @@ class Painter extends React.Component {
         if (request.readyState === 4 && request.status === 200) {
           //do our stuff
           var response = request.responseText;
-          console.log(response);
         }
       };
 
@@ -107,8 +106,7 @@ class Painter extends React.Component {
 
   onChange = (evt, value) => {
     if (value) {
-      console.log(value);
-      this.setState({
+        this.setState({
         activeBrushSize: value
       });
     }
@@ -148,7 +146,9 @@ class Painter extends React.Component {
                   <div className="slider-container">
                     <Slider
                       value={this.state.activeBrushSize}
-                      onChange={this.onChange}>
+                      onChange={this.onChange}
+                      color={`${this.state.activeColor}`}
+                      >
                     </Slider>
                   </div>
                 </div>

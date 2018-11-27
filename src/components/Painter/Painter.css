@@ -119,9 +119,9 @@
     box-shadow: inset 0px 1px 0px rgba(255,255,255,0.5), 0px 2px 2px rgba(0,0,0,0.5);
     margin-left: 10px;
     margin-right: 10px;
-    background-color: cyan;
-    
+    background-color: cyan;   
 }
+
 
 .active{
     border: 2px solid white;
@@ -133,7 +133,7 @@
  material slider overwrites
 **/
 .slider-container {
-    width: 70%;
+    width: 90%;
     height: 100%;
     display: flex;
     align-items: center;

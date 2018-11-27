@@ -37,7 +37,7 @@ export default class Register extends React.Component {
       .then(res => {
         this.switchLoading();
         if (res.status === 200) {
-          this.props.onRegister(res.data.token);
+          this.props.onRegister(res.data);
         }
       })
       .catch(e => {

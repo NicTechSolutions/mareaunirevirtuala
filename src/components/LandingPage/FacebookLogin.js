@@ -46,7 +46,7 @@ export default class FacebookLogin extends React.Component {
   updateLoggedInState(response) {
     axios.post(`${Constants.API_URL}/users/fb/login`, { access_token: response.authResponse.accessToken })
       .then(res => {
-        this.props.onLogin(res.data.token);
+        this.props.onLogin(res.data);
       }).catch(err => {
           NotificationManager.error("Nu te putem inregistra cu Facebook");
       });

@@ -33,14 +33,16 @@ export default class Login extends React.Component {
       .then(res => {
         this.switchLoading();
         if (res.status === 200) {
-          this.props.onLogin(res.data.token);
+          this.props.onLogin(res.data);
         }
       })
       .catch(e => {
-        this.switchLoading();
-        this.setState({
-          error: e.response ? e.response.data.message : "Aparent ne lovim de o problema interna, ne pare rau",
-        });
+        if (e.response) {
+          this.switchLoading();
+          this.setState({
+            error: e.response ? e.response.data.message : "Aparent ne lovim de o problema interna, ne pare rau",
+          });
+        }
       });
   }
 

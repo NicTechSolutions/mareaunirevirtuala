@@ -7,19 +7,12 @@ import "./OptIns.css";
 export default class OptIns extends React.Component {
     constructor(props) {
         super(props);
-        const refs = [];
         this.state = {
-            opts: props.opts, refs
+            opts: props.opts
         };
     }
 
-    componentDidMount() {
-        this.state.refs.map((ref, i) => {
-            if (ref.value) {
-                ref.item.checked = ref.value
-            }
-        })
-    }
+   
     updateOpt(input) {
         const id = input.target.id
 

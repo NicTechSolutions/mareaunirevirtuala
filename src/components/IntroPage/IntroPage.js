@@ -1,15 +1,9 @@
 import React from 'react';
-import { disableBodyScroll } from 'body-scroll-lock';
 
 import "./IntroPage.css";
 import Button from '../Button';
 
 export default class IntroPage extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-
     participate = () => {
         this.props.history.push("/landing");
     };

@@ -91,7 +91,7 @@ class Painter extends React.Component {
       request.onreadystatechange = function () {
         if (request.readyState === 4 && request.status === 200) {
           //do our stuff
-          var response = request.responseText;
+          // var response = request.responseText;
         }
       };
 

@@ -6,9 +6,6 @@ import SegmentedProgressbar from './SegmentedProgressbar';
 import { withRouter } from 'react-router-dom';
 import './Counter.css';
 
-import downloadIcon from './assets/download1.svg'
-import settingsIcon from './assets/settings.svg';
-import drawIcon from './assets/tools.svg';
 import Button from '../Button';
 import Constants from '../../constants/Constants';
 

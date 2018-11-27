@@ -4,7 +4,6 @@ import Cookies from 'universal-cookie';
 
 import Login from './Login';
 import FacebookLogin from './FacebookLogin';
-import Text from '../Text';
 import Link from './Link';
 import Register from './Register';
 import { ForgotPasswordModal } from '../PasswordReset';

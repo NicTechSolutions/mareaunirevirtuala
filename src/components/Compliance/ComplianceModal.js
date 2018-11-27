@@ -36,7 +36,7 @@ export default class ComplianceModal extends React.Component {
                 </div>
                 <Button handleClick={this.handleUserAccept} buttonText="Sunt de acord" />
                 <div className="extra">
-                    <a href="#" >Mai multe informatii despre cookie-uri si modificarile propuse de Regulamentul (UE) 2016/679.</a>
+                    <a href="www.google.com" >Mai multe informatii despre cookie-uri si modificarile propuse de Regulamentul (UE) 2016/679.</a>
                 </div>
             </Modal>
         )

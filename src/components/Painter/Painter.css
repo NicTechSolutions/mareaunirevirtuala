@@ -1,4 +1,5 @@
 @value main-red from '../../styles/colors.css';
+@value tabletMaxWidth from '../../styles/media.css';
 
 .draw-container {
     height: 100vh;
@@ -51,41 +52,16 @@
     display: flex;
 }
 
-.slider-container {
-    width: 70%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.slider {
-    box-shadow: none!important;  
-    margin: 0!important;
-}
-
-.Slider-pointer-4 {
-    background-color: main-red!important;
-}
-
-.Slider-track-3 {
-    background-color: main-red!important;
-}
-.slider::before {
-    width: 100%;
-    height: 10%;
-    display: none;
-}
 
 .button-bar {
     display: flex;
     width: 100%;
     height: 80px;
     box-shadow: 0px 0px 0px 2px rgba(0, 0, 0, 0.17);
-    position: absolute;
+    position: relative;
+    bottom: 0;
     justify-content: center;
     align-items: center;
-    bottom: 0;
 }
 
 .draw-button {
@@ -117,8 +93,13 @@
     width: 25px;
     background-image: url('/send-button.svg');
 }
+
 .drawing-canvas-container {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
     box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.17);
 }
 
@@ -141,4 +122,45 @@
 .active{
     border: 2px solid white;
     box-shadow: inset 0px 1px 2px rgba(0,0,0,0.5);
+}
+
+
+/**
+ material slider overwrites
+**/
+.slider-container {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider {
+    box-shadow: none!important;  
+    margin: 0!important;
+}
+
+.Slider-pointer-4 {
+    background-color: main-red!important;
+}
+
+.Slider-track-3 {
+    background-color: main-red!important;
+}
+.slider::before {
+    width: 100%;
+    height: 10%;
+    display: none;
+}
+
+@media only screen and (max-width: tabletMaxWidth) {
+    .button-bar {
+        position: absolute;
+    }
+
+    .drawing-canvas-container {
+        justify-content: flex-start;
+        align-items: flex-start;
+    } 
 }

@@ -8,8 +8,6 @@ import classNames from 'classnames';
 import { withRouter } from 'react-router-dom';
 import Constants from '../../constants/Constants';
 
-import Button from '../Button';
-
 import './Painter.css';
 
 const COLORS = ['#CE1126', '#FCD116', '#002B7F'];
@@ -26,13 +24,15 @@ class Painter extends React.Component {
     this.clearCanvas = this.clearCanvas.bind(this);
     this.saveDrawing = this.saveDrawing.bind(this);
     this.undo = this.undo.bind(this);
+    this.canvasHeight = null;
+    this.canvasWidth = null;
 
     this.state = {
       activeColor: COLORS[0],
       activeBrushSize: 10,
       size: 10,
       toggleSizer: false,
-      toggleColors: false
+      toggleColors: false,
     };
   }
 
@@ -41,6 +41,11 @@ class Painter extends React.Component {
   }
 
   componentDidMount() {
+    window.addEventListener("resize", this.updateDimensions.bind(this));
+
+    this.updateDimensions();  
+
+
     if (this.canvas) {
       let canvas = this.canvas.canvas;
       let context = canvas.getContext('2d');
@@ -48,6 +53,22 @@ class Painter extends React.Component {
       context.fillRect(0, 0, canvas.width, canvas.height);
     }
   }
+
+  updateDimensions() {
+    if (this.canvasContainer.clientHeight > this.canvasContainer.clientWidth) {
+      this.canvasHeight = this.canvasContainer.clientWidth - 50;
+      this.canvasWidth = this.canvasContainer.clientWidth;
+    } else {
+      this.canvasHeight = this.canvasContainer.clientHeight - 50;
+      this.canvasWidth = this.canvasContainer.clientHeight;
+    }
+
+    this.setState({
+      canvasHeight: this.canvasHeight,
+      canvasWidth: this.canvasWidth
+    });
+  }
+
 
   clearCanvas() {
     if (this.canvas) {
@@ -110,7 +131,7 @@ class Painter extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="draw-container " >
+        <div className="draw-container" >
           <div className="header">
             <div className="colors">
               {COLORS.map(color => (
@@ -133,12 +154,14 @@ class Painter extends React.Component {
               </div>
             </div>
           </div>
-          <div className="drawing-canvas-container " onTouchStart={() => this.setState({ toggleColors: false, toggleSizer: false })}>
+          <div className="drawing-canvas-container"
+            ref={(divElement) => this.canvasContainer = divElement}
+            onTouchStart={() => this.setState({ toggleColors: false, toggleSizer: false })}>
             <CanvasDraw
               ref={this.toRef}
               style={{ position: 'static' }}
-              canvasWidth={window.innerWidth}
-              canvasHeight={window.innerWidth}
+              canvasWidth={this.state.canvasWidth}
+              canvasHeight={this.state.canvasHeight}
               brushSize={this.state.activeBrushSize}
               brushColor={this.state.activeColor}
             />

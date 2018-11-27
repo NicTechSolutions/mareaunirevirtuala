@@ -2,9 +2,12 @@
 @value tabletMaxWidth from '../../styles/media.css';
 
 .draw-container {
-    height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+canvas {
+    box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.17);
 }
 
 .header {
@@ -12,6 +15,7 @@
     width: 100%;
     height: 75px;
     justify-content: space-between;
+    box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.17);
 }
 
 
@@ -100,11 +104,11 @@
 
 .drawing-canvas-container {
     width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex: 1;
-    box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.17);
 }
 
 .separator {

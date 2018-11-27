@@ -52,18 +52,20 @@ class Painter extends React.Component {
   }
 
   updateDimensions() {
-    if (this.canvasContainer.clientHeight > this.canvasContainer.clientWidth) {
-      this.canvasHeight = this.canvasContainer.clientWidth - 50;
-      this.canvasWidth = this.canvasContainer.clientWidth;
-    } else {
-      this.canvasHeight = this.canvasContainer.clientHeight - 50;
-      this.canvasWidth = this.canvasContainer.clientHeight;
-    }
+    if (this.canvasContainer) {
+      if (this.canvasContainer.clientHeight > this.canvasContainer.clientWidth) {
+        this.canvasHeight = this.canvasContainer.clientWidth - 50;
+        this.canvasWidth = this.canvasContainer.clientWidth;
+      } else {
+        this.canvasHeight = this.canvasContainer.clientHeight - 50;
+        this.canvasWidth = this.canvasContainer.clientHeight;
+      }
 
-    this.setState({
-      canvasHeight: this.canvasHeight,
-      canvasWidth: this.canvasWidth
-    });
+      this.setState({
+        canvasHeight: this.canvasHeight,
+        canvasWidth: this.canvasWidth
+      });
+    }
   }
 
 
@@ -124,13 +126,13 @@ class Painter extends React.Component {
   }
 
   onDrawing = () => {
-    this.setState({toggleSizer: false });
+    this.setState({ toggleSizer: false });
   }
 
   render() {
     return (
       <React.Fragment>
-        <div className="draw-container" >
+        <div className="container draw-container">
           <div className="header">
             <div className="colors">
               {COLORS.map(color => (
@@ -163,7 +165,7 @@ class Painter extends React.Component {
             onTouchStart={this.onDrawing}
             onClick={this.onDrawing}
             onDragStart={this.onDrawing}
-            >
+          >
             <CanvasDraw
               ref={this.toRef}
               style={{ position: 'static' }}

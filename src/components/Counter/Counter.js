@@ -93,7 +93,7 @@ class Counter extends React.Component {
             text={this.state.number}
           />
         </div>
-        <p className="submit-text">Pana acum, {this.state.number} de romani au #desenat Romania asa cum si-au dorit!</p>
+        <p className="submit-text">Pana acum, {this.state.number} {this.state.number < 20 ? "" : "de"} romani au #desenat Romania asa cum si-au dorit!</p>
 
         {!this.state.hasPainting && <Button handleClick={this.navigateToPainter} buttonText="Vreau sa desenez"></Button>}
         {this.state.hasPainting &&

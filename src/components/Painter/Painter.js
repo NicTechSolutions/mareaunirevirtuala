@@ -44,13 +44,12 @@ class Painter extends React.Component {
     window.addEventListener("resize", this.updateDimensions.bind(this));
 
     this.updateDimensions();
-
-
     if (this.canvas) {
       let canvas = this.canvas.canvas;
       let context = canvas.getContext('2d');
-      context.fillStyle = 'white';
+      context.fillStyle = "red";
       context.fillRect(0, 0, canvas.width, canvas.height);
+      console.log(context);
     }
   }
 
@@ -169,6 +168,7 @@ class Painter extends React.Component {
               canvasHeight={this.state.canvasHeight}
               brushSize={this.state.activeBrushSize}
               brushColor={this.state.activeColor}
+              gridColor="black"
             />
           </div>
           <div className="button-bar" onClick={this.undo}>

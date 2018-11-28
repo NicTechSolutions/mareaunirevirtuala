@@ -51,6 +51,8 @@ export default class ForgotPasswordModal extends React.Component {
                 <Modal open={this.state.open} onClose={this.onClose}>
                     <div className="main-container">
                         <div className="content">
+                            <div className="reset-info">Te rugam sa introduci adresa de email pe care iti vom
+                             trimite instructiunile de resetare a parolei. </div>
                             <input className="input" type="email" placeholder="Email" value={this.state.email}
                                 onChange={({ target: { value } }) => {
                                     this.setState({ email: value })

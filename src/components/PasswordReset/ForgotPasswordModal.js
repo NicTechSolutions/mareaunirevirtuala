@@ -41,6 +41,11 @@ export default class ForgotPasswordModal extends React.Component {
             }
         }).catch(err => {
             this.switchLoading();
+            if (err.response.data) {
+                NotificationManager.error(err.response.data.message);
+            }else {
+                NotificationManager.error("Ups, intampinam o problema!");
+            }
         })
     }
 

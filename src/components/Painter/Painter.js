@@ -56,11 +56,11 @@ class Painter extends React.Component {
   updateDimensions() {
     if (this.canvasContainer) {
       if (this.canvasContainer.clientHeight > this.canvasContainer.clientWidth) {
-        this.canvasHeight = this.canvasContainer.clientWidth - 50;
-        this.canvasWidth = this.canvasContainer.clientWidth;
+        this.canvasHeight = this.canvasContainer.clientWidth -20;
+        this.canvasWidth = this.canvasContainer.clientWidth -20;
       } else {
-        this.canvasHeight = this.canvasContainer.clientHeight - 50;
-        this.canvasWidth = this.canvasContainer.clientHeight;
+        this.canvasHeight = this.canvasContainer.clientHeight -20 ;
+        this.canvasWidth = this.canvasContainer.clientHeight -20;
       }
 
       this.setState({
@@ -85,7 +85,7 @@ class Painter extends React.Component {
 
   saveDrawing() {
     if (this.canvas) {
-      var data = this.canvas.canvas.toDataURL('image/jpeg');
+      var data = this.canvas.canvas.toDataURL('image/png');
       axios.post(`${Constants.API_URL}/drawings/upload`, {
         drawing: data
       }).then(response => {

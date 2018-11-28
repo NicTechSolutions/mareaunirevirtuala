@@ -11,7 +11,7 @@ export default class ViewerFrame extends React.Component {
     componentDidMount(props) {
         console.log("in viewer frame");
         let context = this;
-        const image = ImageUtils.loadTexture("/test_4096x1936.png", undefined, function () {
+        const image = ImageUtils.loadTexture("/test.png", undefined, function () {
             context.setState({ image });
             console.log('loaded img');
         });

@@ -8,6 +8,7 @@ import Recaptcha from 'react-recaptcha';
 import Modal from 'react-responsive-modal';
 
 import Constants from '../../../constants/Constants';
+import { NotificationManager } from 'react-notifications';
 
 export default class Register extends React.Component {
   static propTypes = {
@@ -47,7 +48,7 @@ export default class Register extends React.Component {
   submit() {
     this.switchLoading();
     if(!this.captchaToken) {
-        console.log("captcha failed");
+        NotificationManager.error("Captcha checked failed");
     }
     const data = {
       name: this.state.name,

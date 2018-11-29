@@ -7,6 +7,7 @@ import './config/Interceptors';
 import requireAuth from './AuthenticatedHOC';
 
 class App extends Component {
+
   render() {
     return (
       <div className="App">

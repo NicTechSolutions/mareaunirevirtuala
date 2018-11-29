@@ -57,10 +57,10 @@ class Painter extends React.Component {
     if (this.canvasContainer) {
       if (this.canvasContainer.clientHeight > this.canvasContainer.clientWidth) {
         this.canvasHeight = this.canvasContainer.clientWidth -20;
-        this.canvasWidth = this.canvasContainer.clientWidth -20;
+        this.canvasWidth = this.canvasContainer.clientWidth;
       } else {
         this.canvasHeight = this.canvasContainer.clientHeight -20 ;
-        this.canvasWidth = this.canvasContainer.clientHeight -20;
+        this.canvasWidth = this.canvasContainer.clientHeight;
       }
 
       this.setState({

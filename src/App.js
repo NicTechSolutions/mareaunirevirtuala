@@ -48,7 +48,7 @@ class App extends Component {
           <Route exact path="/painter" component={requireAuth(Painter)} />
           <Route exact path="/viewerframe" component={requireAuth(ViewerFrame)} />
           <Route exact path="/counter" component={requireAuth(Counter)} />
-          <Route exact path="/reset-pass" component={requireAuth(PasswordResetPage)} />
+          <Route exact path="/reset-pass" component={PasswordResetPage} />
         </GAListener>
         </Switch>
       </div>

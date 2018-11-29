@@ -9,6 +9,10 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
+import ReactGA from 'react-ga';
+import config from './config/ga.json';
+
+ReactGA.initialize(config.gaId);
 
 ReactDOM.render(
   <BrowserRouter>

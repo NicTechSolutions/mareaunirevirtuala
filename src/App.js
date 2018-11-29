@@ -31,12 +31,11 @@ class GAListener extends Component {
 }
 
 class App extends Component {
-
-    componentWillMount() {
-        ReactGA.set({ page: "/" });
-        ReactGA.pageview("/");
-    }
-
+  componentWillMount() {
+    ReactGA.set({ page: "/" });
+    ReactGA.pageview("/");
+  }
+  
   render() {
     return (
       <div className="App">

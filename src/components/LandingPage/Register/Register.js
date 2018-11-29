@@ -66,9 +66,6 @@ export default class Register extends React.Component {
       .catch(e => {
         this.switchLoading();
         this.setState({
-          name: '',
-          email: '',
-          password: '',
           error: e.response.data.message,
         })
       });

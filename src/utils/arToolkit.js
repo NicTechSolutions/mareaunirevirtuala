@@ -59,6 +59,6 @@ export function initializeArToolkit(renderer, camera, onRenderFcts) {
 export function getMarker(arToolkitContext, markerRoot) {
     return new ArMarkerControls(arToolkitContext, markerRoot, {
         type : 'pattern',
-        patternUrl : hiro,
+        patternUrl : "pattern-marker.patt",
     });
 }

@@ -34,13 +34,15 @@ class Counter extends React.Component {
     this.onUserPainted = this.onUserPainted.bind(this);
     this.logout = this.logout.bind(this);
     const hasPainting = this.cookies.get("user.has_painting") === "true" ? true : false;
+    const paintingCount = Number(this.cookies.get("user.count"));
     window.addEventListener('paint_done', this.onUserPainted, false);
     console.log(hasPainting);
 
     this.state = {
       modalOpen: false,
       number: 0,
-      hasPainting: hasPainting
+      hasPainting: hasPainting,
+      paintingCount: paintingCount
     }
   }
 
@@ -51,7 +53,8 @@ class Counter extends React.Component {
   onUserPainted(ev) {
     this.cookies.set("user.has_painting", true);
     this.setState({
-      hasPainting: true
+      hasPainting: true,
+      paintingCount: Number(this.cookies.get("user.count"))
     });
   }
 
@@ -93,8 +96,9 @@ class Counter extends React.Component {
           />
         </div>
         <p className="submit-text">Pana acum, {this.state.number} {this.state.number < 20 ? "" : "de"} romani au #desenat Romania asa cum si-au dorit!</p>
-        {!this.state.hasPainting && <p className="submit-text">Foloseste culorile tricolorului si contribuie la cel mai mare mozaic virtual!</p>}  
+        {!this.state.hasPainting && <p className="submit-text">Foloseste culorile tricolorului si contribuie la cel mai mare mozaic virtual!</p>}
         {!this.state.hasPainting && <Button handleClick={this.navigateToPainter} buttonText="Creioneaza-ti gandul"></Button>}
+        {this.state.hasPainting && this.state.paintingCount < 10 && <Button handleClick={this.navigateToPainter} buttonText="Creioneaza-ti gandul"></Button>}
         {this.state.hasPainting &&
           <div className="final-message">
             In scurt timp iti vei putea vedea desenul intr-un mod unic! Iti multumim pentru contributie,

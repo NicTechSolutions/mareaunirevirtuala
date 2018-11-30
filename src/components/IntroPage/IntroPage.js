@@ -31,7 +31,7 @@ export default class IntroPage extends React.Component {
                         <div className="rect"></div>
                         <div className="inline"><div className="romania"></div> <div className="text">Fii parte din cel mai mare mozaic virtual</div></div>
                     </div>
-                    <Button handleClick={this.participate} buttonText="INSCIRE-TE" />
+                    <Button handleClick={this.participate} buttonText="INSCRIE-TE" />
                 </div>
             </React.Fragment>
         )

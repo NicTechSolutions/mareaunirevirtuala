@@ -15,7 +15,6 @@ import { NotificationManager } from 'react-notifications';
 const COLORS = ['#CE1126', '#FCD116', '#002B7F'];
 
 class Painter extends React.Component {
-
   cookies = new Cookies();
 
   constructor(props) {
@@ -56,10 +55,10 @@ class Painter extends React.Component {
   updateDimensions() {
     if (this.canvasContainer) {
       if (this.canvasContainer.clientHeight > this.canvasContainer.clientWidth) {
-        this.canvasHeight = this.canvasContainer.clientWidth -20;
+        this.canvasHeight = this.canvasContainer.clientWidth - 20;
         this.canvasWidth = this.canvasContainer.clientWidth;
       } else {
-        this.canvasHeight = this.canvasContainer.clientHeight -20 ;
+        this.canvasHeight = this.canvasContainer.clientHeight - 20;
         this.canvasWidth = this.canvasContainer.clientHeight;
       }
 
@@ -90,6 +89,9 @@ class Painter extends React.Component {
         drawing: data
       }).then(response => {
         NotificationManager.success("Imaginea s-a incarcat cu succes!");
+        const oldCount= Number(this.cookies.get("user.count"));
+        this.cookies.set("user.count", oldCount + 1);
+
         window.dispatchEvent(new Event("paint_done"));
       }, err => {
         NotificationManager.error("Eroare la incarcarea imaginii!");

@@ -58,6 +58,7 @@ class LandingPage extends React.Component {
   login(userData) {
     this.cookies.set("token", userData.token);
     this.cookies.set("user.has_painting", userData.drawing);
+    this.cookies.set("user.count", userData.count);
     this.props.history.push('/counter');
   }
 

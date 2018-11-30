@@ -31,6 +31,7 @@ export default class Register extends React.Component {
   }
 
   checkCaptcha = () => {
+    window.scrollTo(0, 0);
     this.setState({
       captchaOpen: true
     });

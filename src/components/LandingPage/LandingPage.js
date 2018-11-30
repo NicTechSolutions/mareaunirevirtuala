@@ -21,7 +21,7 @@ class LandingPage extends React.Component {
     super(props);
 
     const token = this.cookies.get('token');
-    if(token) {
+    if (token) {
       this.props.history.push('/counter');
     }
 
@@ -36,6 +36,7 @@ class LandingPage extends React.Component {
     };
   }
 
+ 
   closeModal(accepted) {
     this.setState({
       modalOpen: false,

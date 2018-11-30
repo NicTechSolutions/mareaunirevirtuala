@@ -3,7 +3,7 @@ import Modal from 'react-responsive-modal';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { NotificationManager } from 'react-notifications';
-
+import Cookies from 'universal-cookie';
 import "./SettingsModal.css";
 
 import OptIns from './OptIns';
@@ -11,6 +11,7 @@ import OptIns from './OptIns';
 import Constants from '../../constants/Constants';
 
 export default class SettingsModal extends React.Component {
+  cookies = new Cookies();
 
   static propTypes = {
     open: PropTypes.bool,
@@ -56,10 +57,6 @@ export default class SettingsModal extends React.Component {
                 value: opts.all
               },
               {
-                id: "marketing",
-                message: "Emailuri pentru marketing",
-                value: opts.marketing
-              }, {
                 id: "next",
                 message: "Ce urmeaza sa facem",
                 value: opts.next
@@ -97,12 +94,15 @@ export default class SettingsModal extends React.Component {
       .then(
         response => {
           NotificationManager.success("Cont sters cu succes");
+          this.cookies.remove('token');
+          this.cookies.remove('gdpr_compliance');
+          this.cookies.remove('user.has_painting');
           this.props.closeModal();
-
+          window.location.reload();
         }, err => {
           NotificationManager.error("Eroare");
           this.props.closeModal();
-        })
+        });
   };
 
   render() {

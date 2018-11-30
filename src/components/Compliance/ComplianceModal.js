@@ -31,8 +31,8 @@ export default class ComplianceModal extends React.Component {
             <Modal open={this.props.open} showCloseIcon={false} onClose={Function.prototype}>
                 <div className="compliance-info">
                     Platforma Marea Unire Virtuala utilizeaza fisiere de tip cookie pentru a imbunatati experienta
-                    si interactiunea ta cu acesta. Confidentialitatea ta este importanta,
-                    astfel printr-un clic pe buton "Sunt de acord" accepti utilizarea tehnologiilor cookie.
+                    si interactiunea ta cu aceasta. Confidentialitatea ta este importanta,
+                    astfel printr-un clic pe butonul "Sunt de acord" accepti utilizarea tehnologiilor cookie.
                 </div>
                 <Button handleClick={this.handleUserAccept} buttonText="Sunt de acord" />
                 <div className="extra">

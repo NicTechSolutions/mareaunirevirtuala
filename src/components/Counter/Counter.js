@@ -98,13 +98,14 @@ class Counter extends React.Component {
         <p className="submit-text">Pana acum, {this.state.number} {this.state.number < 20 ? "" : "de"} romani au #desenat Romania asa cum si-au dorit!</p>
         {!this.state.hasPainting && <p className="submit-text">Foloseste culorile tricolorului si contribuie la cel mai mare mozaic virtual!</p>}
         {!this.state.hasPainting && <Button handleClick={this.navigateToPainter} buttonText="Creioneaza-ti gandul"></Button>}
-        {this.state.hasPainting && this.state.paintingCount < 10 && <Button handleClick={this.navigateToPainter} buttonText="Creioneaza-ti gandul"></Button>}
         {this.state.hasPainting &&
           <div className="final-message">
             In scurt timp iti vei putea vedea desenul intr-un mod unic! Iti multumim pentru contributie,
             spune-le si prietenilor tai ca participi la cel mai mare mozaic virtual!
           </div>
-        }
+        } {this.state.hasPainting && this.state.paintingCount < 10 &&
+          <Button handleClick={this.navigateToPainter} buttonText="Creioneaza un nou gand"></Button>}
+
         <div className="social-media-container">
           <FacebookShareButton
             url={this.url}

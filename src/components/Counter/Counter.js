@@ -73,7 +73,6 @@ class Counter extends React.Component {
 
   logout() {
     this.cookies.remove('token');
-    this.cookies.remove('gdpr_compliance');
     this.cookies.remove('user.has_painting');
     this.props.history.push('/');
   }

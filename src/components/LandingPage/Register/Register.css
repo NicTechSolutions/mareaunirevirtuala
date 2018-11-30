@@ -8,13 +8,14 @@
     width: 50%;
 }
 
-.recaptcha {
-    width: 200px;
-    height:150px;
-}
-
 @media only screen and (max-width: tabletMaxWidth) {
     .register {
         width: 90%;
+    }
+
+    iframe {
+        -ms-transform: scale(0.8); /* IE 9 */
+        -webkit-transform: scale(0.8); /* Safari */
+        transform: scale(0.8);
     }
 }

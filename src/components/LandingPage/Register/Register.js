@@ -47,8 +47,8 @@ export default class Register extends React.Component {
 
   submit() {
     this.switchLoading();
-    if(!this.captchaToken) {
-        NotificationManager.error("Captcha checked failed");
+    if (!this.captchaToken) {
+      NotificationManager.error("Captcha checked failed");
     }
     const data = {
       name: this.state.name,
@@ -94,7 +94,7 @@ export default class Register extends React.Component {
           this.setState({ password: value })
         }} />
 
-        <Modal onClose={() => {this.setState({captchaOpen: false})}} open={this.state.captchaOpen}>
+        <Modal onClose={() => { this.setState({ captchaOpen: false }) }} open={this.state.captchaOpen}>
           <Recaptcha
             sitekey={Constants.RECAPTCHA_KEY}
             verifyCallback={this.onVerifyRecaptcha}

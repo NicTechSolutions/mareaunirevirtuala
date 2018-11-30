@@ -45,7 +45,7 @@ class App extends Component {
           <Route exact path="/" component={IntroPage} />
           <Route exact path="/landing" component={LandingPage} />
           <Route exact path="/painter" component={requireAuth(Painter)} />
-          <Route exact path="/mosaic" component={requireAuth(ViewerFrame)} />
+          <Route exact path="/mosaic" component={ViewerFrame} />
           <Route exact path="/counter" component={requireAuth(Counter)} />
           <Route exact path="/reset-pass" component={PasswordResetPage} />
         </GAListener>

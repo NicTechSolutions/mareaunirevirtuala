@@ -28,8 +28,8 @@ class Counter extends React.Component {
   constructor(props) {
     super(props);
     this.url = "https://mareaunirevirtuala.ro";
-    this.title = "TRIMITE UN GAND BUN DE CENTENAR - Hai alaturi de mine si fii parte din unire #mareaunirevirtuala #romania #mozaicvirtual";
-    this.titleTwitter = "Trimite un gand bun de Centenar - Hai alaturi de mine si fii parte din unire #mareaunirevirtuala #romania #mozaicvirtual";
+    this.title = "TRIMITE UN GAND BUN DE CENTENAR - Hai alaturi de mine si fii parte din unire #mareaunirevirtuala #romania #mozaicvirtual #trimiteungandbun";
+    this.titleTwitter = "Trimite un gand bun de Centenar - Hai alaturi de mine si fii parte din unire #mareaunirevirtuala #romania #mozaicvirtual #trimiteungandbun";
     this.toggleModal = this.toggleModal.bind(this);
     this.navigateToPainter = this.navigateToPainter.bind(this);
     this.onUserPainted = this.onUserPainted.bind(this);

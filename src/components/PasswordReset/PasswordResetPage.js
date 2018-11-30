@@ -27,7 +27,7 @@ export default class PasswordResetPage extends React.Component {
     }
 
     onSubmit = () => {
-        if (this.state.password !== this.state.newPassword) {
+        if (this.state.password !== this.state.passwordCheck) {
             this.setState({displayError: true});
             this.setState({password: ''});
             this.setState({passwordCheck: ''});

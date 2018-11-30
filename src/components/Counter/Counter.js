@@ -27,7 +27,7 @@ class Counter extends React.Component {
   cookies = new Cookies();
   constructor(props) {
     super(props);
-    this.url = "www.mareaunirevirtuala.ro";
+    this.url = "https://mareaunirevirtuala.ro";
     this.title = "TRIMITE UN GAND BUN DE CENTENAR - Hai alaturi de mine si fii parte din unire #mareaunirevirtuala #romania #centenar";
     this.toggleModal = this.toggleModal.bind(this);
     this.navigateToPainter = this.navigateToPainter.bind(this);

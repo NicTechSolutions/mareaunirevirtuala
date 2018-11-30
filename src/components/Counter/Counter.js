@@ -34,7 +34,7 @@ class Counter extends React.Component {
     this.onUserPainted = this.onUserPainted.bind(this);
     this.logout = this.logout.bind(this);
     const hasPainting = this.cookies.get("user.has_painting") === "true" ? true : false;
-    const paintingCount = Number(this.cookies.get("user.counter"));
+    const paintingCount = Number(this.cookies.get("user.count"));
     window.addEventListener('paint_done', this.onUserPainted, false);
     console.log(hasPainting);
 

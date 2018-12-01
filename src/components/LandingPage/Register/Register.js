@@ -4,8 +4,11 @@ import Button from '../../Button';
 
 import './Register.css';
 import axios from 'axios';
+import Recaptcha from 'react-recaptcha';
+import Modal from 'react-responsive-modal';
 
 import Constants from '../../../constants/Constants';
+import { NotificationManager } from 'react-notifications';
 
 export default class Register extends React.Component {
   static propTypes = {
@@ -23,15 +26,36 @@ export default class Register extends React.Component {
       password: '',
       loading: false,
       error: '',
+      captchaOpen: false
     }
+  }
+
+  checkCaptcha = () => {
+    window.scrollTo(0, 0);
+    this.setState({
+      captchaOpen: true
+    });
+  }
+
+  onVerifyRecaptcha = (response) => {
+    console.log("captcha verified " + response);
+    this.captchaToken = response;
+    this.setState({
+      captchaOpen: false
+    });
+    this.submit();
   }
 
   submit() {
     this.switchLoading();
-    const data = { 
-      name: this.state.name, 
-      email: this.state.email, 
-      password: this.state.password
+    if (!this.captchaToken) {
+      NotificationManager.error("Captcha checked failed");
+    }
+    const data = {
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password,
+      captcha: this.captchaToken
     };
     axios.post(`${Constants.API_URL}/users/register`, data)
       .then(res => {
@@ -43,13 +67,11 @@ export default class Register extends React.Component {
       .catch(e => {
         this.switchLoading();
         this.setState({
-          name: '',
-          email: '',
-          password: '',
           error: e.response.data.message,
         })
       });
   }
+
 
   switchLoading() {
     this.setState({
@@ -72,10 +94,18 @@ export default class Register extends React.Component {
         <input className="input" type="password" placeholder="Parola" value={this.state.password} onChange={({ target: { value } }) => {
           this.setState({ password: value })
         }} />
-        {!loading && <Button handleClick={this.submit} buttonText="ÎNREGISTRARE" />}
+
+        <Modal onClose={() => { this.setState({ captchaOpen: false }) }} open={this.state.captchaOpen}>
+          <Recaptcha
+            sitekey={Constants.RECAPTCHA_KEY}
+            verifyCallback={this.onVerifyRecaptcha}
+          />
+        </Modal>
+
+        {!loading && <Button handleClick={this.checkCaptcha} buttonText="ÎNREGISTRARE" />}
         {loading &&
           <div class="loader-container">
-            <div class="loader"/>
+            <div class="loader" />
           </div>}
       </div>
     )

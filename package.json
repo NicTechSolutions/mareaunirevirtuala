@@ -20,7 +20,9 @@
     "react-canvas-draw": "^0.1.9",
     "react-circular-progressbar": "^1.0.0",
     "react-dom": "^16.6.1",
+    "react-ga": "^2.5.6",
     "react-notifications": "^1.4.3",
+    "react-recaptcha": "^2.3.10",
     "react-responsive-modal": "^3.5.1",
     "react-router-dom": "^4.3.1",
     "react-share": "^2.4.0",
@@ -34,7 +36,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

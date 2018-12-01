@@ -35,7 +35,7 @@
 }
 
 .submit-text {
-    margin: 0 35px 45px 35px;
+    margin: 0 35px 25px 35px;
     font-family: Lato;
     font-size: 15px;
     font-weight: 900;
@@ -72,9 +72,15 @@
         width: 100%;
     }
 
-    .settingsButton{
+    .settings-button{
         height: 25px;
         width: 25px;
         margin-right: 10px;
     }
+
+    .logout-button {
+        height: 25px;
+        width: 25px;
+    }
+  
 }

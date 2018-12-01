@@ -12,4 +12,10 @@
     .register {
         width: 90%;
     }
+
+    iframe {
+        -ms-transform: scale(0.8); /* IE 9 */
+        -webkit-transform: scale(0.8); /* Safari */
+        transform: scale(0.8);
+    }
 }

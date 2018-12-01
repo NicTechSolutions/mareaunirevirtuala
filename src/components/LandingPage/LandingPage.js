@@ -21,7 +21,7 @@ class LandingPage extends React.Component {
     super(props);
 
     const token = this.cookies.get('token');
-    if(token) {
+    if (token) {
       this.props.history.push('/counter');
     }
 
@@ -36,6 +36,7 @@ class LandingPage extends React.Component {
     };
   }
 
+ 
   closeModal(accepted) {
     this.setState({
       modalOpen: false,
@@ -57,7 +58,8 @@ class LandingPage extends React.Component {
 
   login(userData) {
     this.cookies.set("token", userData.token);
-    this.cookies.set("user.has_painting", false);
+    this.cookies.set("user.has_painting", userData.drawing);
+    this.cookies.set("user.count", userData.count);
     this.props.history.push('/counter');
   }
 

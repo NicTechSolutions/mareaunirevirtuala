@@ -1,5 +1,5 @@
 import cameraData from '../assets/camera_para.dat';
-import hiro from '../assets/path.hiro';
+import markerPatter from '../assets/pattern-marker.patt';
 
 /* globals THREEx */
 
@@ -59,6 +59,6 @@ export function initializeArToolkit(renderer, camera, onRenderFcts) {
 export function getMarker(arToolkitContext, markerRoot) {
     return new ArMarkerControls(arToolkitContext, markerRoot, {
         type : 'pattern',
-        patternUrl : "pattern-marker.patt",
+        patternUrl : markerPatter,
     });
 }

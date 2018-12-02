@@ -28,7 +28,8 @@ class Counter extends React.Component {
   constructor(props) {
     super(props);
     this.url = "https://mareaunirevirtuala.ro";
-    this.title = "TRIMITE UN GAND BUN DE CENTENAR - Hai alaturi de mine si fii parte din unire #mareaunirevirtuala #romania #centenar";
+    this.title = "TRIMITE UN GAND BUN DE CENTENAR - Hai alaturi de mine si fii parte din unire #mareaunirevirtuala #romania #mozaicvirtual #trimiteungandbun";
+    this.titleTwitter = "Trimite un gand bun de Centenar - Hai alaturi de mine si fii parte din unire #mareaunirevirtuala #romania #mozaicvirtual #trimiteungandbun";
     this.toggleModal = this.toggleModal.bind(this);
     this.navigateToPainter = this.navigateToPainter.bind(this);
     this.onUserPainted = this.onUserPainted.bind(this);
@@ -115,7 +116,8 @@ class Counter extends React.Component {
           </FacebookShareButton>
           <TwitterShareButton
             url={this.url}
-            title={this.title + " " + this.url}>
+            via={"mozaicvirtual"}
+            title={this.titleTwitter + " " + this.url}>
             <TwitterIcon size={36} round></TwitterIcon>
           </TwitterShareButton>
           <LinkedinShareButton
